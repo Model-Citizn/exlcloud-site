@@ -72,7 +72,14 @@ const indexable = IS_PRODUCTION && !noindex;
     <div id="video-modal" class="vm" hidden role="dialog" aria-modal="true" aria-label="EXL Cloud 2-minute introduction">
       <div class="vm-inner">
         <button type="button" class="vm-close" aria-label="Close video">✕</button>
-        <video class="vm-video" controls playsinline preload="none" src={LINKS.explainerVideo}></video>
+        <div class="vm-frame">
+          <video class="vm-video" controls playsinline preload="none" src={LINKS.explainerVideo}></video>
+          <button type="button" class="vm-sound" hidden>🔊 Tap for sound</button>
+          <div class="vm-error" hidden>
+            <p>Sorry — the video failed to load. Please check your connection or try again.</p>
+            <a href={LINKS.explainerVideo} target="_blank" rel="noopener">Open video directly ↗</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -91,18 +98,34 @@ const indexable = IS_PRODUCTION && !noindex;
         toggle.textContent = open ? "✕" : "☰";
       });
 
-      /* Explainer video modal */
+      /* Explainer video modal: tries to play with sound (the visitor just clicked "Watch");
+         if the browser refuses, plays muted with a "Tap for sound" button, as the old site did. */
       const modal = document.getElementById("video-modal")!;
       const video = modal.querySelector("video")!;
+      const soundBtn = modal.querySelector<HTMLButtonElement>(".vm-sound")!;
+      const errBox = modal.querySelector<HTMLElement>(".vm-error")!;
       const close = () => { video.pause(); modal.hidden = true; document.body.style.overflow = ""; };
+      const start = async () => {
+        errBox.hidden = true; soundBtn.hidden = true;
+        try { video.currentTime = 0; } catch {}
+        video.muted = false;
+        try { await video.play(); }
+        catch {
+          if (video.error) return; /* failed to load: the error message is showing instead */
+          video.muted = true; soundBtn.hidden = false;
+          video.play().catch(() => {});
+        }
+      };
+      soundBtn.addEventListener("click", () => { video.muted = false; soundBtn.hidden = true; video.play().catch(() => {}); });
+      video.addEventListener("volumechange", () => { if (!video.muted) soundBtn.hidden = true; });
+      video.addEventListener("error", () => { errBox.hidden = false; soundBtn.hidden = true; });
       document.addEventListener("click", (e) => {
         const t = (e.target as Element).closest("[data-open-video]");
         if (!t) return;
         e.preventDefault();
         modal.hidden = false;
         document.body.style.overflow = "hidden";
-        video.currentTime = 0;
-        video.play().catch(() => {});
+        start();
       });
       modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
       modal.querySelector(".vm-close")!.addEventListener("click", close);
