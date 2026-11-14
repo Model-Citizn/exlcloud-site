@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Pricing, { FAQ } from "../components/pages/Pricing.jsx";
+import { SITE, PLANS, SKILLS_LABEL, money } from "../lib/site.js";
+import { faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout title={`EXL Cloud Pricing — Plans from ${money(PLANS.dataPull.price)} AUD per Month`} description={`EXL Cloud pricing: Data Pull plan from ${money(PLANS.dataPull.price)} AUD/month and Advanced Content plan from ${money(PLANS.advanced.price)} AUD/month. Both include ${PLANS.advanced.connections} Xero connections and a ${SITE.trialDays}-day free trial.`} jsonLd={[faqJsonLd(FAQ)]}>
+  <Pricing />
+</BaseLayout>

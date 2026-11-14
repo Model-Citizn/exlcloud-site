@@ -1,18 +1,9 @@
 # EXL Cloud - exlcloud.io
-# Allow AI crawlers for AEO (Answer Engine Optimisation).
-# Legacy design drafts are kept in the repo for reference but are not part of the live site.
-
-User-agent: GPTBot
-User-agent: ClaudeBot
-User-agent: PerplexityBot
-User-agent: Googlebot
-User-agent: Bingbot
+# AI crawlers welcome (Answer Engine Optimisation).
 User-agent: *
 Allow: /
-Disallow: /EXL%20Cloud%20Site.html
-Disallow: /EXL%20Cloud%20Site%20v4.html
-Disallow: /EXL%20Cloud%20Public%20Site%20Rebuild/
-Disallow: /uploads/exlcloud-site/
-Disallow: /tools/
+Disallow: /dl-3way
+Disallow: /dl-performance
+Disallow: /dl-cashflow
 
-Sitemap: https://exlcloud.io/sitemap.xml
+Sitemap: https://exlcloud.io/sitemap-index.xml

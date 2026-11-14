@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DownloadForm, { downloadItems } from "../components/islands/DownloadForm.jsx";
+const dl = downloadItems["3way"];
+---
+<BaseLayout title={`${dl.label} — Free Download | EXL Cloud`} description={dl.title} noindex>
+  <DownloadForm item="3way" client:load />
+</BaseLayout>

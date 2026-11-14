@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Gen2 from "../components/pages/Gen2.jsx";
+import { getCollection } from "astro:content";
+import { SKILLS_LABEL } from "../lib/site.js";
+const skills = (await getCollection("skills")).map((s) => s.data);
+---
+<BaseLayout title="What's New — EXL Cloud Generation 2" description={`See what's new in EXL Cloud Generation 2: rebuilt workbooks, ${SKILLS_LABEL} Claude AI skills and updated pricing.`}>
+  <Gen2 skills={skills} />
+</BaseLayout>

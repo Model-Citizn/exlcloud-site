@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/pages/Contact.jsx";
+import { SITE, PLANS, SKILLS_LABEL, money } from "../lib/site.js";
+import { faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout title={`Contact EXL Cloud`} description={`Contact EXL Cloud in South Melbourne, Australia. Email ${SITE.email} or call ${SITE.phone}.`}>
+  <Contact />
+</BaseLayout>

@@ -1,54 +1,65 @@
-# exlcloud-public
+# exlcloud.io
 
-Source for **https://exlcloud.io**, served by GitHub Pages from `main` (custom domain in `CNAME`).
+Source for **https://exlcloud.io**. Built with [Astro](https://astro.build) (static HTML, React only for the few
+interactive pieces) and deployed to GitHub Pages by GitHub Actions.
 
-## How the site is built
+## Where things live
 
-The whole site is one React app in **`index.html`** (compiled in the browser by Babel — no build server).
-Articles live in **`articles-data.jsx`**.
+| To change… | Edit |
+|---|---|
+| Prices, connection tiers, checkout links, contact details, "20+" skills label, nav | `src/lib/site.js` — **one place, used everywhere** (pages, FAQs, structured data) |
+| A skill page (or add skill 22) | `src/content/skills/NN-slug.md` |
+| An article (or add one) | `src/content/articles/slug.md` |
+| Page copy & layout | `src/components/pages/*.jsx` (Home, About, Features, Gen2, Pricing, Support, Contact, Legal, Nav, Footer) |
+| Page titles & meta descriptions | `src/pages/*.astro` |
+| Interactive pieces | `src/components/islands/*.jsx` (product carousel, board-pack demo, hero video, Future model, download form) |
+| Colours, font, radii | `src/lib/theme.js` |
+| Shared CSS (responsive rules, article typography) | `src/styles/global.css` |
+| Images, videos, logos, CNAME, robots.txt | `public/` (served from the site root, so `public/images/x.png` → `/images/x.png`) |
 
-GitHub Pages needs a real file at every URL, so every route — `/about`, `/gen2`, `/articles/<slug>` … — is a
-*generated copy* of `index.html` with its own title, description, canonical URL, Open Graph tags, JSON-LD and
-pre-rendered text for search/AI crawlers. **Never edit those copies by hand.** Edit the sources, then regenerate:
+### Add a skill
+1. Copy an existing file in `src/content/skills/`, name it `22-your-skill.md`.
+2. Fill in the frontmatter (`number`, `name`, `slug`, `tier`, `summary`, …). Set `isNew: true` and remove it from the previous new skill.
+3. That's it — it appears on `/skills`, `/gen2`, gets its own page at `/skills/your-skill`, and is in the sitemap.
 
-| To change… | Edit | Then run |
-|---|---|---|
-| Any page content, pricing, skills list, nav, styles | `index.html` | `node tools/build-pages.mjs` |
-| Page titles / meta descriptions | `PAGE_META` in `index.html` | `node tools/build-pages.mjs` |
-| Add / edit an article | `articles-data.jsx` | `node tools/make-article-images.mjs` then `node tools/build-pages.mjs` |
+### Add an article
+1. Create `src/content/articles/your-slug.md` with frontmatter: `title`, `date`, `excerpt`, `tags`, `kind: "product"`,
+   and `skills: [21, 20]` to link it to skill pages. Write the body in Markdown.
+2. `npm run images` creates the hero/social image. Commit both.
 
-`node tools/build-pages.mjs --check` verifies everything is in sync and that stale claims (old skill counts,
-old $50/$125 pricing, Boot Camp) haven't crept back in. The GitHub Action in `.github/workflows/site-check.yml`
-runs this on every pull request and push to `main`.
+`kind` controls where it appears on `/articles`: `product` (EXL Cloud & skills), `guide` (Xero + Excel how-tos),
+`hub` (republished from the Model Citizn Knowledge Hub — set `canonical:` to the hub URL so Google credits the original).
 
-Bump `SITE_UPDATED` in `tools/build-pages.mjs` when you make a site-wide content change (drives sitemap `lastmod`).
-
-### Skills count
-Site copy says **"20+" Claude AI skills**. The actual list (currently 21) lives in the `skills` array of the `Gen2`
-component in `index.html`. Add new skills there — mark the newest with a `"NEW"` 4th element to show the badge.
-
-## Assets
-
-- `images/` — live site images, logos, hero video (`images/hero-video.mp4`), article hero images (`images/articles/`).
-- `uploads/` — team photos, client logos and the 2-minute explainer (`uploads/exlcloud-2min-intro.mp4`).
-- `EXL Cloud Site.html`, `EXL Cloud Site v4.html`, `EXL Cloud Public Site Rebuild/`, root `*.jsx`, `uploads/exlcloud-site/` —
-  **legacy design drafts**, kept for reference only. Not linked from the live site and excluded in `robots.txt`.
-
-## Branches, backups and rollback
-
-- `main` = live site. Don't commit straight to it — work on a branch and merge via pull request.
-- Every release is preceded by an annotated backup tag of the live site, e.g. `backup/live-2026-11-14`.
-
-**Roll back the live site to a backup tag** (GitHub Pages redeploys automatically within a minute or two):
+## Run it locally
 
 ```bash
-git fetch --tags origin
-git checkout main
-git revert --no-edit <merge-commit-sha>      # preferred: undo one release, keep history
-# or, to hard-reset to the backup exactly:
-git reset --hard backup/live-2026-11-14
-git push --force-with-lease origin main
+npm ci            # once
+npm run dev       # live preview at http://localhost:4321
+npm run check     # content guard-rails (stale prices/counts, skill numbering, missing images)
+npm run build     # production build into dist/
 ```
 
-**Preview locally:** `python3 -m http.server 8000` in the repo root, then open `http://localhost:8000/#/gen2`
-(hash routing is used automatically off the live domain).
+Every pull request runs `check` + `build` in GitHub Actions; merges to `main` deploy automatically.
+
+## One-time switch-over (from the old single-file site)
+
+The old site was served straight from the repo root. The new one is built by Actions, so **before merging this
+branch into `main`**: repo **Settings → Pages → Build and deployment → Source → "GitHub Actions"**.
+The live site keeps serving until the first Actions deploy replaces it. Custom domain (`exlcloud.io`) stays as is.
+
+## Backups & rollback
+
+- `backup/live-2026-11-14` — tag of the live single-file site before the November 2026 update.
+- `pre-astro-rebuild` — tag of the single-file site with the November consistency fixes, just before the rebuild.
+- `legacy/` — the old `index.html` app, articles data and earlier design drafts, kept for reference (not deployed).
+
+**Roll back the live site:** `git revert` the merge commit on `main` (Actions redeploys). To go all the way back to the
+old single-file site, also switch Pages Source back to "Deploy from a branch" (`main`, `/root`) and
+`git reset --hard backup/live-2026-11-14 && git push --force-with-lease origin main`.
+
+## Open items
+- `LEAD_FORM` in `src/lib/site.js` — add the HubSpot portal and form IDs so model-download leads are recorded
+  (until then, downloads are released but leads aren't captured — same as before, where they were only stored in
+  the visitor's own browser).
+- Confirm the legal entity name (`EXL Cloud Pty Ltd` vs `EXL Cloud Holdings Pty Ltd` in the privacy policy / EULA).
+- `LINKS.skillsGithub` — point at the public skills download location.

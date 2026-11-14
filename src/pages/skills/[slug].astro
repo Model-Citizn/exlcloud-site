@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import { C, F, R } from "../../lib/theme.js";
+import { SITE, LINKS, PLANS, money, SKILLS_LABEL } from "../../lib/site.js";
+import { clip, breadcrumbJsonLd } from "../../lib/seo.js";
+import { pad } from "../../components/SkillGrid.jsx";
+
+export async function getStaticPaths() {
+  const skills = await getCollection("skills");
+  return skills.map((s) => ({ params: { slug: s.data.slug }, props: { entry: s } }));
+}
+const { entry } = Astro.props;
+const s = entry.data;
+const { Content } = await render(entry);
+const all = (await getCollection("skills")).map((x) => x.data);
+const byNum = new Map(all.map((x) => [x.number, x]));
+const related = s.related.map((n) => byNum.get(n)).filter(Boolean);
+const sorted = [...all].sort((a, b) => a.number - b.number);
+const idx = sorted.findIndex((x) => x.number === s.number);
+const prev = sorted[idx - 1], next = sorted[idx + 1];
+const articles = (await getCollection("articles", ({ data }) => !data.draft && data.skills.includes(s.number)));
+
+const ld = {
+  "@context": "https://schema.org", "@type": "SoftwareApplication",
+  name: `EXL Cloud Skill ${pad(s.number)}: ${s.name}`, applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Claude AI skill for Microsoft Excel", operatingSystem: "Windows",
+  description: s.summary, url: `${SITE.url}/skills/${s.slug}`,
+  isPartOf: { "@type": "SoftwareApplication", name: "EXL Cloud", url: SITE.url },
+  offers: { "@type": "Offer", price: PLANS.advanced.price.toFixed(2), priceCurrency: PLANS.currency, description: "Included in the Advanced Content plan" },
+};
+const chip = { fontFamily: F, fontSize: "13px", color: C.gD, background: C.w, border: `1px solid ${C.gL}`, borderRadius: `${R.full}px`, padding: "6px 14px" };
+const h3 = { fontFamily: F, fontSize: "12px", fontWeight: 700, color: C.priA, letterSpacing: "2px", textTransform: "uppercase", margin: "0 0 12px" };
+---
+<BaseLayout title={`Skill ${pad(s.number)}: ${s.name} — EXL Cloud AI Skills`} description={clip(s.summary)}
+  jsonLd={[ld, breadcrumbJsonLd([["Home", "/"], ["Skills", "/skills"], [s.name, `/skills/${s.slug}`]])]}>
+  <section style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.priL}30, transparent), linear-gradient(170deg, ${C.dark}, ${C.pri})`, padding: "80px 24px 56px" }}>
+    <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+      <a href="/skills" style={{ fontFamily: F, fontSize: "14px", color: C.mint, display: "inline-flex", gap: "8px", marginBottom: "24px" }}>← All {SKILLS_LABEL} skills</a>
+      <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "14px" }}>
+        <span style={{ fontFamily: F, fontSize: "13px", fontWeight: 700, color: C.mint, letterSpacing: "2px" }}>SKILL {pad(s.number)} · {s.tier.toUpperCase()}</span>
+        {s.isNew && <span style={{ fontFamily: F, fontSize: "11px", fontWeight: 700, color: C.dark, background: C.mint, borderRadius: `${R.full}px`, padding: "3px 10px", letterSpacing: "1px" }}>NEW</span>}
+      </div>
+      <h1 style={{ fontFamily: F, fontSize: "44px", fontWeight: 800, color: C.w, lineHeight: 1.1, margin: "0 0 16px", letterSpacing: "-0.5px" }}>{s.name}</h1>
+      <p style={{ fontFamily: F, fontSize: "18px", color: "rgba(255,255,255,0.7)", maxWidth: "680px", lineHeight: 1.65, margin: 0 }}>{s.summary}</p>
+    </div>
+  </section>
+
+  <section style={{ padding: "64px 24px 80px" }}>
+    <div class="skill-layout" style={{ maxWidth: "1120px", margin: "0 auto", display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: "56px", alignItems: "start" }}>
+      <article class="article-body"><Content /></article>
+      <aside class="skill-aside" style={{ display: "flex", flexDirection: "column", gap: "20px", position: "sticky", top: "88px" }}>
+        {s.askClaude.length > 0 && (
+          <div style={{ background: C.warmBg, border: `1px solid ${C.gL}`, borderRadius: `${R.lg}px`, padding: "22px" }}>
+            <h2 style={h3}>Ask Claude</h2>
+            {s.askClaude.map((p) => <p style={{ fontFamily: F, fontSize: "14px", color: C.dark, background: C.w, border: `1px solid ${C.gL}`, borderRadius: `${R.sm}px`, padding: "10px 12px", margin: "0 0 8px" }}>“{p}”</p>)}
+          </div>
+        )}
+        {s.outputs.length > 0 && (
+          <div style={{ background: C.warmBg, border: `1px solid ${C.gL}`, borderRadius: `${R.lg}px`, padding: "22px" }}>
+            <h2 style={h3}>Adds to your workbook</h2>
+            <ul style={{ listStyle: "none", margin: 0 }}>
+              {s.outputs.map((o) => <li style={{ fontFamily: F, fontSize: "14px", color: C.gD, padding: "6px 0", borderBottom: `1px solid ${C.gL}`, lineHeight: 1.5 }}>✓ {o}</li>)}
+            </ul>
+          </div>
+        )}
+        {s.worksWith.length > 0 && (
+          <div>
+            <h2 style={h3}>Works with</h2>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>{s.worksWith.map((w) => <span style={chip}>{w}</span>)}</div>
+          </div>
+        )}
+        {s.knowledgeHub.length > 0 && (
+          <div style={{ background: C.pale, borderRadius: `${R.lg}px`, padding: "22px" }}>
+            <h2 style={{ ...h3, color: C.priL }}>Go deeper — Knowledge Hub</h2>
+            {s.knowledgeHub.map((k) => <a href={k.url} target="_blank" rel="noopener" style={{ display: "block", fontFamily: F, fontSize: "14px", fontWeight: 600, color: C.priL, padding: "6px 0", textDecoration: "underline", textUnderlineOffset: "3px" }}>{k.title} ↗</a>)}
+          </div>
+        )}
+        <div style={{ background: `linear-gradient(135deg, ${C.pri}, ${C.priL})`, borderRadius: `${R.lg}px`, padding: "22px" }}>
+          <p style={{ fontFamily: F, fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, margin: "0 0 14px" }}>Included with the Advanced Content plan — {money(PLANS.advanced.price)} AUD/month, {PLANS.advanced.connections} Xero connections.</p>
+          <a class="cta-btn" href={LINKS.checkout} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>Start free trial</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {(related.length > 0 || articles.length > 0) && (
+    <section style={{ background: C.warmBg, padding: "64px 24px" }}>
+      <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+        {related.length > 0 && <>
+          <h2 style={{ fontFamily: F, fontSize: "24px", fontWeight: 800, color: C.dark, margin: "0 0 20px" }}>Works well with</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "14px", marginBottom: articles.length ? "40px" : 0 }}>
+            {related.map((r) => (
+              <a href={`/skills/${r.slug}`} class="lift" style={{ display: "block", background: C.w, border: `1px solid ${C.gL}`, borderRadius: `${R.lg}px`, padding: "18px 20px" }}>
+                <span style={{ fontFamily: F, fontSize: "11px", fontWeight: 700, color: C.priA }}>SKILL {pad(r.number)}</span>
+                <div style={{ fontFamily: F, fontSize: "15px", fontWeight: 700, color: C.dark, margin: "4px 0" }}>{r.name}</div>
+                <div style={{ fontFamily: F, fontSize: "13px", color: C.g, lineHeight: 1.5 }}>{r.summary}</div>
+              </a>
+            ))}
+          </div>
+        </>}
+        {articles.length > 0 && <>
+          <h2 style={{ fontFamily: F, fontSize: "24px", fontWeight: 800, color: C.dark, margin: "0 0 20px" }}>Read more</h2>
+          {articles.map((a) => <a href={`/articles/${a.id}`} style={{ display: "block", fontFamily: F, fontSize: "16px", fontWeight: 600, color: C.priL, padding: "6px 0", textDecoration: "underline", textUnderlineOffset: "3px" }}>{a.data.title}</a>)}
+        </>}
+      </div>
+    </section>
+  )}
+
+  <nav aria-label="Skill navigation" style={{ maxWidth: "1120px", margin: "0 auto", padding: "32px 24px 64px", display: "flex", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" }}>
+    {prev ? <a href={`/skills/${prev.slug}`} style={{ fontFamily: F, fontSize: "14px", color: C.priL }}>← Skill {pad(prev.number)}: {prev.name}</a> : <span />}
+    {next && <a href={`/skills/${next.slug}`} style={{ fontFamily: F, fontSize: "14px", color: C.priL }}>Skill {pad(next.number)}: {next.name} →</a>}
+  </nav>
+  <style>
+    @media (max-width: 900px) { .skill-layout { grid-template-columns: 1fr !important; } .skill-aside { position: static !important; } }
+  </style>
+</BaseLayout>

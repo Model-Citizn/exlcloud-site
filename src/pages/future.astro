@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Future from "../components/islands/FutureModel.jsx";
+import { SITE, PLANS, SKILLS_LABEL, money } from "../lib/site.js";
+import { faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout title={`The Future — Interactive 3-Way Driver-Based Model | EXL Cloud`} description={`Adjust the drivers and watch a 3-way driver-based financial model respond in real time — the EXL Cloud modelling standard.`}>
+  <Future client:load />
+</BaseLayout>

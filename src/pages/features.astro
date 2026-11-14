@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Features, { FAQ } from "../components/pages/Features.jsx";
+import BoardPackDemo from "../components/islands/BoardPackDemo.jsx";
+import { SITE, PLANS, SKILLS_LABEL, money } from "../lib/site.js";
+import { faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout title={`EXL Cloud Features — Xero Data Pulls, Financial Models, Reports & AI Skills`} description={`EXL Cloud features: live Xero data pulls and pushes, 3-way models, performance reports, Power BI, HTML board packs and ${SKILLS_LABEL} Claude AI skills.`} jsonLd={[faqJsonLd(FAQ)]}>
+  <Features>
+    <BoardPackDemo slot="boardPack" client:visible />
+  </Features>
+</BaseLayout>

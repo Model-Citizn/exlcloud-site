@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+import { C, F, R } from "../../lib/theme.js";
+import { LINKS } from "../../lib/site.js";
+
+const all = (await getCollection("articles", ({ data }) => !data.draft)).sort((a, b) => +b.data.date - +a.data.date);
+/* Product & skills first — that's what the EXL Cloud blog is for. Republished Knowledge Hub posts come last. */
+const groups = [
+  { id: "product", title: "Product & AI Skills", desc: "How to get more out of EXL Cloud workbooks and the Claude AI skills library.", items: all.filter((a) => a.data.kind === "product") },
+  { id: "guide", title: "Xero + Excel Guides", desc: "Practical guides for reporting, cash flow and consolidation with Xero data in Excel.", items: all.filter((a) => a.data.kind === "guide") },
+  { id: "hub", title: "From the Model Citizn Knowledge Hub", desc: "Financial modelling thinking from our parent consultancy. Full archive on the Knowledge Hub.", items: all.filter((a) => a.data.kind === "hub") },
+];
+const tags = ["All", ...new Set(all.flatMap((a) => a.data.tags))];
+---
+<BaseLayout title="Articles — EXL Cloud Product Guides & AI Skills | EXL Cloud" description="Articles on EXL Cloud workbooks, the Claude AI skills library, and getting Xero data into Excel — plus financial modelling thinking from the Model Citizn Knowledge Hub.">
+  <section style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.priL}25, transparent 50%), linear-gradient(170deg, ${C.dark}, ${C.pri})`, padding: "100px 24px 70px" }}>
+    <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+      <div style={{ fontFamily: F, fontWeight: 700, color: C.mint, letterSpacing: "3px", marginBottom: "12px", textTransform: "uppercase", fontSize: "25px" }}>Knowledge Hub</div>
+      <h1 style={{ fontFamily: F, fontSize: "36px", fontWeight: 800, color: C.w, lineHeight: 1.15, margin: "0 0 12px" }}>Articles</h1>
+      <p style={{ fontFamily: F, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0, maxWidth: "640px" }}>Product guides for EXL Cloud and its Claude AI skills. For deeper financial modelling technique, see the <a href={LINKS.knowledgeHub} style={{ color: C.mint, textDecoration: "underline" }} target="_blank" rel="noopener">Model Citizn Knowledge Hub ↗</a>.</p>
+    </div>
+  </section>
+  <section style={{ padding: "60px 24px 100px" }}>
+    <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+      <div id="tag-filter" style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "40px" }} role="group" aria-label="Filter articles by topic">
+        {tags.map((t, i) => <button type="button" data-tag={t} aria-pressed={i === 0 ? "true" : "false"} class="tag-btn">{t}</button>)}
+      </div>
+      {groups.filter((g) => g.items.length).map((g) => (
+        <div class="article-group" style={{ marginBottom: "64px" }}>
+          <h2 style={{ fontFamily: F, fontSize: "28px", fontWeight: 800, color: C.dark, margin: "0 0 6px" }}>{g.title}</h2>
+          <p style={{ fontFamily: F, fontSize: "15px", color: C.g, margin: "0 0 28px" }}>{g.desc}</p>
+          <div class="prod-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "24px" }}>
+            {g.items.map((a) => <ArticleCard article={a} />)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <style>
+    .tag-btn { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 500; padding: 8px 20px; border-radius: 9999px; border: none; background: #FAFCFB; color: #374151; }
+    .tag-btn[aria-pressed="true"] { background: #2D6A4F; color: #fff; box-shadow: 0 2px 10px rgba(45,106,79,0.19); }
+  </style>
+  <script>
+    /* Topic filter: hides non-matching cards and empty groups. Pure progressive enhancement. */
+    const btns = document.querySelectorAll<HTMLButtonElement>("#tag-filter .tag-btn");
+    btns.forEach((b) => b.addEventListener("click", () => {
+      const tag = b.dataset.tag!;
+      btns.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      document.querySelectorAll<HTMLElement>(".article-group").forEach((g) => {
+        let shown = 0;
+        g.querySelectorAll<HTMLElement>(".article-card").forEach((c) => {
+          const ok = tag === "All" || (c.dataset.tags || "").split("|").includes(tag);
+          c.style.display = ok ? "" : "none";
+          if (ok) shown++;
+        });
+        g.style.display = shown ? "" : "none";
+      });
+    }));
+  </script>
+</BaseLayout>

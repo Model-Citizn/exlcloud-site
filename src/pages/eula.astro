@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Legal from "../components/pages/Legal.jsx";
+import { SITE, PLANS, SKILLS_LABEL, money } from "../lib/site.js";
+import { faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout title={`End User Licence Agreement — EXL Cloud`} description={`The EXL Cloud end user licence agreement: licence scope, restrictions, intellectual property, liability and termination terms.`}>
+  <Legal type="eula" />
+</BaseLayout>

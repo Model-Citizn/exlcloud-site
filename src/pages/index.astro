@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Home, { FAQ } from "../components/pages/Home.jsx";
+import HeroVideo from "../components/islands/HeroVideo.jsx";
+import ProductCarousel from "../components/islands/ProductCarousel.jsx";
+import BoardPackDemo from "../components/islands/BoardPackDemo.jsx";
+import { SITE } from "../lib/site.js";
+import { softwareJsonLd, personJsonLd, faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout
+  title={`EXL Cloud — Keep Excel, Leverage the Cloud | Xero to Excel in ${SITE.clicks} Clicks`}
+  description={SITE.description}
+  jsonLd={[softwareJsonLd(), personJsonLd(), faqJsonLd(FAQ)]}
+>
+  <Home>
+    <HeroVideo slot="heroVideo" client:idle />
+    <ProductCarousel slot="carousel" client:visible />
+    <BoardPackDemo slot="boardPack" client:visible />
+  </Home>
+  <script is:inline>
+    /* Legacy links from the old single-page site: /#article:slug, /#/path and /#page */
+    (function () {
+      var h = location.hash.replace(/^#/, "");
+      if (!h) return;
+      var to = h.indexOf("article:") === 0 ? "/articles/" + h.slice(8) : h.charAt(0) === "/" ? h : /^[a-z0-9-]+$/.test(h) ? "/" + h : null;
+      if (to && to !== "/") location.replace(to);
+    })();
+  </script>
+</BaseLayout>

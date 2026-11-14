@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About, { FAQ } from "../components/pages/About.jsx";
+import { SITE, PLANS, SKILLS_LABEL, money } from "../lib/site.js";
+import { faqJsonLd } from "../lib/seo.js";
+---
+<BaseLayout title={`About EXL Cloud — The Team Behind the Excel Add-in for Xero`} description={`Meet the team behind EXL Cloud, the Excel add-in connecting Excel to Xero. Founded by Lance Rubin, Chartered Accountant with 20+ years in financial modelling.`} jsonLd={[faqJsonLd(FAQ)]}>
+  <About />
+</BaseLayout>

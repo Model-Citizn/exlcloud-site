@@ -1,0 +1,110 @@
+---
+/*
+ * Base layout for every page: <head> (SEO, Open Graph, JSON-LD, security), nav, footer,
+ * the explainer-video modal and two tiny scripts (nav + video). Pages only supply content.
+ */
+import Nav from "../components/pages/Nav.jsx";
+import Footer from "../components/pages/Footer.jsx";
+import { SITE, LINKS } from "../lib/site.js";
+import { orgJsonLd } from "../lib/seo.js";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /* absolute canonical URL; defaults to this page on exlcloud.io */
+  canonical?: string;
+  ogType?: "website" | "article";
+  ogImage?: string;
+  /* extra JSON-LD objects for this page (FAQPage, BlogPosting, …) */
+  jsonLd?: object[];
+  noindex?: boolean;
+}
+const { title, description, canonical, ogType = "website", ogImage, jsonLd = [], noindex = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const canonicalUrl = canonical || SITE.url + (path === "/" ? "/" : path);
+const image = ogImage ? new URL(ogImage, SITE.url).href : `${SITE.url}/images/logo-exlcloud500.png`;
+const ld = [orgJsonLd(), ...jsonLd];
+---
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- GitHub Pages can't send security headers, so the policy lives here. No 'unsafe-eval' now that Babel is gone. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://api.hsforms.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.hsforms.com" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-snippet:-1, max-image-preview:large"} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:site_name" content="EXL Cloud" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="en_AU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@exl_cloud" />
+    <link rel="icon" type="image/png" href="/images/logo-exlcloud250.png" />
+    <link rel="apple-touch-icon" href="/images/logo-exlcloud500.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="EXL Cloud Articles" href="/rss.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+    {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o).replace(/</g, "\\u003c")} />)}
+    <script is:inline>
+      /* Clickjacking protection — GitHub Pages can't send X-Frame-Options */
+      if (window.top !== window.self) { try { window.top.location = window.location; } catch (e) { document.documentElement.style.display = "none"; } }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Nav current={path} />
+    <main id="main"><slot /></main>
+    <Footer />
+
+    <!-- Explainer video modal: any element with [data-open-video] opens it -->
+    <div id="video-modal" class="vm" hidden role="dialog" aria-modal="true" aria-label="EXL Cloud 2-minute introduction">
+      <div class="vm-inner">
+        <button type="button" class="vm-close" aria-label="Close video">✕</button>
+        <video class="vm-video" controls playsinline preload="none" src={LINKS.explainerVideo}></video>
+      </div>
+    </div>
+
+    <script>
+      /* Nav: shade on scroll + mobile menu */
+      const nav = document.getElementById("site-nav");
+      const onScroll = () => nav && (nav.dataset.scrolled = String(window.scrollY > 20));
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      const toggle = document.getElementById("nav-toggle");
+      const menu = document.getElementById("nav-mobile");
+      toggle?.addEventListener("click", () => {
+        const open = menu!.hidden;
+        menu!.hidden = !open;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.textContent = open ? "✕" : "☰";
+      });
+
+      /* Explainer video modal */
+      const modal = document.getElementById("video-modal")!;
+      const video = modal.querySelector("video")!;
+      const close = () => { video.pause(); modal.hidden = true; document.body.style.overflow = ""; };
+      document.addEventListener("click", (e) => {
+        const t = (e.target as Element).closest("[data-open-video]");
+        if (!t) return;
+        e.preventDefault();
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+      modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+      modal.querySelector(".vm-close")!.addEventListener("click", close);
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) close(); });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SkillGrid from "../../components/SkillGrid.jsx";
+import { getCollection } from "astro:content";
+import { C, F, R } from "../../lib/theme.js";
+import { SKILLS_LABEL, LINKS, PLANS, money } from "../../lib/site.js";
+import { faqJsonLd } from "../../lib/seo.js";
+
+const skills = (await getCollection("skills")).map((s) => s.data).sort((a, b) => a.number - b.number);
+const FAQ = [
+  { q: "What is an EXL Cloud AI skill?", a: "A skill is a packaged set of instructions for Anthropic's Claude that is trained on the structure of EXL Cloud workbooks. Load it into Claude and it follows the same method, standards and checks every time — instead of you prompting from scratch." },
+  { q: "Which plan includes the skills?", a: `The skills library is included in the Advanced Content plan (${money(PLANS.advanced.price)} AUD/month, ${PLANS.advanced.connections} Xero connections included).` },
+  { q: "Do the skills change my workbook without asking?", a: "Skills that build sheets add new, clearly labelled tabs and record what they did in the workbook's change log. Review skills such as the Model Best Practice Benchmark treat the model under review as read-only." },
+  { q: "Where can I learn the modelling technique behind the skills?", a: "Each skill page links to the relevant articles on the Model Citizn Knowledge Hub, and the AI-Powered Accountant program on Maven goes deeper on building and reviewing models with Claude." },
+];
+const itemList = {
+  "@context": "https://schema.org", "@type": "ItemList", name: "EXL Cloud AI Skills Library",
+  itemListElement: skills.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: s.name, url: `https://exlcloud.io/skills/${s.slug}` })),
+};
+---
+<BaseLayout title={`AI Skills Library — ${SKILLS_LABEL} Claude Skills for Excel & Xero | EXL Cloud`}
+  description={`The EXL Cloud AI Skills Library: ${SKILLS_LABEL} purpose-built Claude skills that build, check, document and explain EXL Cloud Excel workbooks connected to Xero.`}
+  jsonLd={[itemList, faqJsonLd(FAQ)]}>
+  <section style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.priL}30, transparent), linear-gradient(170deg, ${C.dark}, ${C.pri})`, padding: "100px 24px 70px" }}>
+    <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+      <div style={{ fontFamily: F, fontWeight: 700, color: C.mint, letterSpacing: "3px", marginBottom: "16px", fontSize: "25px" }}>AI SKILLS LIBRARY</div>
+      <h1 style={{ fontFamily: F, fontSize: "48px", fontWeight: 800, color: C.w, lineHeight: 1.08, margin: "0 0 20px", letterSpacing: "-0.5px" }}>{SKILLS_LABEL} Claude skills,<br />built for your workbooks.</h1>
+      <p style={{ fontFamily: F, fontSize: "18px", color: "rgba(255,255,255,0.65)", maxWidth: "600px", lineHeight: 1.65, margin: "0 0 32px" }}>Each skill teaches Claude exactly how an EXL Cloud workbook is built — its sheets, named ranges, standards and checks — so it builds, checks and explains your model the same way every time.</p>
+      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+        <a class="cta-btn" href={LINKS.checkout} target="_blank" rel="noopener noreferrer">Get Advanced Content</a>
+        <a class="cta-btn soft" href="/articles/exl-cloud-ai-skills-library-explained">How the library fits together →</a>
+      </div>
+    </div>
+  </section>
+  <section style={{ padding: "80px 24px" }}>
+    <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+      <SkillGrid skills={skills} />
+    </div>
+  </section>
+  <section style={{ background: C.warmBg, padding: "80px 24px" }}>
+    <div style={{ maxWidth: "1120px", margin: "0 auto" }} class="faq">
+      <h2 style={{ fontFamily: F, fontSize: "28px", fontWeight: 800, color: C.dark, margin: "0 0 28px" }}>Frequently Asked Questions</h2>
+      {FAQ.map((f) => (
+        <details style={{ borderBottom: `1px solid ${C.gL}`, padding: "18px 0" }}>
+          <summary style={{ fontFamily: F, fontSize: "16px", fontWeight: 600, color: C.dark, display: "flex", justifyContent: "space-between", gap: "16px" }}>{f.q}<span class="faq-plus" aria-hidden="true" style={{ color: C.priA, fontSize: "22px", lineHeight: 1 }}>+</span></summary>
+          <div style={{ marginTop: "12px", fontFamily: F, fontSize: "15px", color: C.g, lineHeight: 1.75 }}>{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

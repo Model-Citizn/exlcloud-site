@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { C, F, R } from "../lib/theme.js";
+---
+<BaseLayout title="Page Not Found — EXL Cloud" description="The page you're looking for doesn't exist or has been moved." noindex>
+  <section style={{ background: `linear-gradient(170deg, ${C.dark}, ${C.pri})`, minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "80px 24px", textAlign: "center" }}>
+    <div style={{ maxWidth: "480px" }}>
+      <div style={{ fontFamily: F, fontSize: "120px", fontWeight: 800, color: C.mint, lineHeight: 1 }}>404</div>
+      <h1 style={{ fontFamily: F, fontSize: "28px", fontWeight: 700, color: C.pale, margin: "16px 0" }}>Page not found</h1>
+      <p style={{ fontFamily: F, fontSize: "16px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 32px" }}>The page you're looking for doesn't exist or has been moved. Try the <a href="/skills" style={{ color: C.mint, textDecoration: "underline" }}>skills library</a> or <a href="/articles" style={{ color: C.mint, textDecoration: "underline" }}>articles</a>.</p>
+      <a class="cta-btn" href="/">Go to Homepage</a>
+    </div>
+  </section>
+  <script is:inline>
+    /* Old single-page-site links like /#/pricing or /#article:slug that land here */
+    (function () { var h = location.hash.replace(/^#/, ""); if (!h) return;
+      var to = h.indexOf("article:") === 0 ? "/articles/" + h.slice(8) : h.charAt(0) === "/" ? h : null;
+      if (to) location.replace(to); })();
+  </script>
+</BaseLayout>
