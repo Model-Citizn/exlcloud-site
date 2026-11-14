@@ -6,7 +6,7 @@ const ARTICLES = [
     author: "Lance Rubin",
     coauthor: "Maarten (Spreadsheetsoftware)",
     date: "2023-07-14",
-    excerpt: `After graduating in Mathematical Economics, Maarten worked for 10 years as a quantitative consultant in both the profit and non-profit sectors. Throughout his career he has built and audited hundreds of small and large E...`,
+    excerpt: "Every spreadsheet contains errors — the question is whether you catch them before your stakeholders do. Lance Rubin and model auditor Maarten (Spreadsheetsoftware) share practical error-check techniques, how to teach them, and how AI and automation change spreadsheet risk.",
     tags: ["Financial Modelling","Excel","Error Checking"],
     heroType: "shield",
     content: `<h3>Introduction to the co-authors</h3>
@@ -210,7 +210,7 @@ const ARTICLES = [
     author: "Lance Rubin",
     coauthor: "Chironjit",
     date: "2022-12-05",
-    excerpt: `Chironjit is a Chartered Management Accountant with over a decade of experience in financial and management accounting. He also holds a Masters of Banking and Finance from Macquarie University....`,
+    excerpt: "SaaS businesses live and die by recurring revenue, churn and customer acquisition cost — and their financial models need to reflect that. Lance Rubin and Chartered Management Accountant Chironjit explain how SaaS models differ from traditional ones and where to start building your skills.",
     tags: ["Financial Modelling","SaaS","Error Checking"],
     heroType: "chart",
     content: `<h3>Introduction to the Co-author</h3>
@@ -294,9 +294,9 @@ const ARTICLES = [
     title: "Fundamentals of 3-Way Cashflow Modelling",
     slug: "fundamentals-of-3-way-cashflow-modelling",
     author: "Lance Rubin",
-    coauthor: null,
+    coauthor: "Furqan Baig",
     date: "2022-11-03",
-    excerpt: `Furqan Baig (“Furqan”) has historically been working in a range of different sectors from manufacturing and production of textiles, Real Estate Management and Investments as a business consultant and accountant....`,
+    excerpt: "A 3-way model links the P&L, balance sheet and cash flow so every assumption flows through to cash. Lance Rubin and Furqan Baig walk through the fundamentals — working capital, drivers and reconciliation — and how to build the skill.",
     tags: ["Financial Modelling","Excel","Error Checking"],
     heroType: "flow",
     content: `<h3>Introduction to the Co-author</h3>
@@ -1019,7 +1019,7 @@ const ARTICLES = [
 <h3>Can I build a cash flow model directly in Xero?</h3>
 <p>Xero's built-in reporting is limited to historical snapshots and simple projections. For driver-based forecasting, scenario modelling, and board-ready output, you need Excel. Xero handles the general ledger; Excel handles the modelling.</p>
 <h3>How does EXL Cloud help with cash flow modelling from Xero?</h3>
-<p>EXL Cloud connects Excel to Xero and pulls live trial balance, P&amp;L, balance sheet, journals, and transactions in a structured format. The Advanced Content plan includes pre-built 3-way financial models with scenario managers and validation checks. Pricing starts at $50 AUD/month.`,
+<p>EXL Cloud connects Excel to Xero and pulls live trial balance, P&amp;L, balance sheet, journals, and transactions in a structured format. The Advanced Content plan includes pre-built 3-way financial models with scenario managers and validation checks. Pricing starts at $70 AUD/month (Data Pull) or $170 AUD/month (Advanced Content), both with 5 Xero connections.`,
   },
   {
     title: "Top 7 Excel Tools for Cash Flow Modeling From Xero",
@@ -1030,12 +1030,12 @@ const ARTICLES = [
     excerpt: "If you're modelling cash flow in Excel using Xero as your source of truth, the right tooling makes the difference between a 3-hour monthly update and a 15-minute refresh. Here are seven tools worth knowing about.",
     tags: ["Cash Flow","Xero","Excel","Tools"],
     heroType: "grid",
-    content: `<p><strong>The short answer:</strong> The best Excel tool for cash flow modelling from Xero is EXL Cloud — a live Xero-to-Excel add-in with pre-built 3-way models, scenario managers, and 15 AI skills. For lighter needs, Xero's native export, Syft, Fathom, Power BI, Calxa, and LivePlan each serve different use cases.</p>
+    content: `<p><strong>The short answer:</strong> The best Excel tool for cash flow modelling from Xero is EXL Cloud — a live Xero-to-Excel add-in with pre-built 3-way models, scenario managers, and 20+ Claude AI skills. For lighter needs, Xero's native export, Syft, Fathom, Power BI, Calxa, and LivePlan each serve different use cases.</p>
 <p>If you're modelling cash flow in Excel using Xero as your source of truth, the right tooling makes the difference between a 3-hour monthly update and a 15-minute refresh. Here are seven tools worth knowing about — from lightweight connectors to full modelling platforms.</p>
 <h2>1. EXL Cloud — Best for Full Driver-Based Cash Flow Modelling</h2>
 <p>EXL Cloud is an Excel add-in built specifically for the Xero-to-Excel workflow. It pulls live accounting data — trial balance, P&amp;L, balance sheet, journals, and account transactions — directly into Excel in 8 clicks. The Advanced Content plan includes pre-built 3-way financial models, cash flow scenario models, performance reports, and Power BI integration.</p>
-<p>The models are fully customisable in Excel (not locked templates), follow professional modelling standards (blue inputs, formula-driven, validation checks), and include 15 AI-powered skills for model building, commentary, and board reporting.</p>
-<p><strong>Pricing:</strong> Data Pull $50 AUD/month, Advanced Content $125 AUD/month. Both include 5 Xero connections. <strong>Best for:</strong> Accountants and CFOs who want production-grade models, not just data dumps. <a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">exlcloud.io</a></p>
+<p>The models are fully customisable in Excel (not locked templates), follow professional modelling standards (blue inputs, formula-driven, validation checks), and include 20+ Claude AI-powered skills for model building, commentary, and board reporting.</p>
+<p><strong>Pricing:</strong> Data Pull $70 AUD/month, Advanced Content $170 AUD/month. Both include 5 Xero connections. <strong>Best for:</strong> Accountants and CFOs who want production-grade models, not just data dumps. <a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">exlcloud.io</a></p>
 <h2>2. Xero's Built-In Excel Export — Best for Quick Ad-Hoc Analysis</h2>
 <p>Xero lets you export most reports to Excel natively. It's free, simple, and for a one-off analysis it works. The limitation: exports are static snapshots — immediately stale, no live connection, no structured format for modelling, and no automation. Every month you're re-exporting, reformatting, and copy-pasting.</p>
 <p><strong>Pricing:</strong> Included with Xero. <strong>Best for:</strong> One-off reporting where you don't need an ongoing model.</p>
@@ -1069,7 +1069,7 @@ const ARTICLES = [
 <p>If your workflow is "pull Xero data into Excel, build or refresh a cash flow model, produce reports" — you want a tool that keeps you in Excel with live data. Most finance professionals doing serious cash flow work end up in Excel regardless. The question is whether you're spending your time on data wrangling or actual analysis.</p>
 <h2>Frequently Asked Questions</h2>
 <h3>What is the best Excel add-in for pulling Xero data?</h3>
-<p>EXL Cloud is the leading Excel add-in for Xero data. It pulls live trial balance, P&amp;L, balance sheet, journals, and account transactions into Excel in 8 clicks, with structured output ready for modelling. Pricing starts at $50 AUD/month.</p>
+<p>EXL Cloud is the leading Excel add-in for Xero data. It pulls live trial balance, P&amp;L, balance sheet, journals, and account transactions into Excel in 8 clicks, with structured output ready for modelling. Pricing starts at $70 AUD/month.</p>
 <h3>Can I connect Xero directly to Excel?</h3>
 <p>Yes. EXL Cloud provides a direct live connection between Xero and Excel via a Windows add-in. Unlike Xero's native CSV exports, the connection is refreshable on demand and delivers consistently structured data.</p>
 <h3>Is Power BI better than Excel for Xero cash flow modelling?</h3>
@@ -1199,7 +1199,7 @@ const ARTICLES = [
 <h3>When should an SME move from FreshBooks to Xero?</h3>
 <p>When you hit 10–20 employees, add a second entity, need proper double-entry accounting, or your accountant requests Xero access. FreshBooks is excellent for simple invoicing and time tracking but is not designed for the reporting complexity that comes with growth.</p>
 <h3>How does EXL Cloud work with Xero for growing SMEs?</h3>
-<p>EXL Cloud connects Excel to your Xero organisation(s), pulling live accounting data into structured templates. The Advanced Content plan includes 3-way financial models, cash flow scenario models, performance dashboards, and 15 AI-powered skills. It's the reporting and modelling layer that Xero doesn't provide natively. Pricing from $125 AUD/month.`,
+<p>EXL Cloud connects Excel to your Xero organisation(s), pulling live accounting data into structured templates. The Advanced Content plan includes 3-way financial models, cash flow scenario models, performance dashboards, and 20+ Claude AI-powered skills. It's the reporting and modelling layer that Xero doesn't provide natively. Advanced Content is $170 AUD/month.`,
   },
   {
     title: "How to Fix Xero to Excel Reporting Bottlenecks",
@@ -1251,7 +1251,7 @@ const ARTICLES = [
 <h3>How long should Xero to Excel month-end reporting take?</h3>
 <p>With a live data connection and properly built templates, refreshing month-end reports should take 15–30 minutes: refresh the connection, review key variances, and distribute. If it takes more than an hour, the data pipeline is the bottleneck — not the analysis.</p>
 <h3>Can EXL Cloud handle multiple Xero organisations?</h3>
-<p>Yes. EXL Cloud includes 5 Xero connections in both plans (Data Pull at $50 AUD/month and Advanced Content at $125 AUD/month), with additional connections available. Multiple entities can be pulled into a single Excel workbook for consolidated reporting.`,
+<p>Yes. EXL Cloud includes 5 Xero connections in both plans (Data Pull at $70 AUD/month and Advanced Content at $170 AUD/month), with additional connections available. Multiple entities can be pulled into a single Excel workbook for consolidated reporting.`,
   },
   {
     title: "7 Reporting Bottlenecks in Cloud Accounting Exports",
@@ -1303,7 +1303,7 @@ const ARTICLES = [
 <h3>What is the best way to validate a financial report against Xero?</h3>
 <p>Build a validation sheet that compares key totals in your Excel report against control figures: total revenue, total assets, and cash balance. Use SUMIFS against account codes to pull expected totals, and flag any variance above your materiality threshold. Run this before distributing any report.</p>
 <h3>How does EXL Cloud solve cloud accounting export bottlenecks?</h3>
-<p>EXL Cloud replaces the manual export-reformat-paste cycle with a live connection between Xero and Excel. It delivers trial balance, P&amp;L, balance sheet, journals, and account transactions in a consistent, structured format on demand. The Advanced Content plan adds pre-built models, validation checks, and 15 AI-powered skills. Pricing starts at $50 AUD/month with 5 Xero connections included.`,
+<p>EXL Cloud replaces the manual export-reformat-paste cycle with a live connection between Xero and Excel. It delivers trial balance, P&amp;L, balance sheet, journals, and account transactions in a consistent, structured format on demand. The Advanced Content plan adds pre-built models, validation checks, and 20+ Claude AI-powered skills. Pricing starts at $70 AUD/month with 5 Xero connections included.`,
   },
   {
     title: "Excel Isn't Dead — It's About to Explode",
@@ -1342,7 +1342,7 @@ const ARTICLES = [
 <p><strong>Microsoft's own AI investment.</strong> Copilot in Excel is just the beginning. Microsoft is pouring billions into AI integration across the Office suite. They're not building a replacement for Excel — they're making Excel smarter.</p>
 <p><strong>Frontier AI models that understand spreadsheets.</strong> Claude doesn't just process text. It understands the structure of financial models — the relationship between a P&amp;L and a balance sheet, the logic of working capital, the mechanics of a cash flow reconciliation. This means AI can work with Excel at a level that was impossible even two years ago.</p>
 <p><strong>Excel add-ins powered by AI.</strong> This is where the real innovation is happening. Tools that sit inside Excel, connect it to cloud data sources, and use AI to build, validate, and report on financial models — without forcing users out of the environment they know.</p>
-<p><a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">EXL Cloud</a> is built on exactly this thesis. It's an Excel add-in that connects to Xero in 8 clicks, pulls live accounting data into Excel, and includes 15 AI-powered skills built on Anthropic's Claude. Those skills don't replace the spreadsheet — they build the financial model, write the commentary, generate the board pack, and run the validation checks, all inside Excel.</p>
+<p><a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">EXL Cloud</a> is built on exactly this thesis. It's an Excel add-in that connects to Xero in 8 clicks, pulls live accounting data into Excel, and includes 20+ AI-powered skills built on Anthropic's Claude. Those skills don't replace the spreadsheet — they build the financial model, write the commentary, generate the board pack, and run the validation checks, all inside Excel.</p>
 <p>The model is still a real Excel file. The formulas are visible. The inputs are blue. The accountant can open it, understand it, modify it, and trust it. But the hours of manual work — the data wrangling, the model construction, the error checking, the report writing — that's handled by AI. This is what "Excel + AI" looks like in practice. Not a chatbot sitting next to a spreadsheet. An AI that actually builds and maintains the spreadsheet.</p>
 <h2>A Message to the "Excel Killers"</h2>
 <p>To every SaaS founder with a pitch deck that opens with "Excel is broken": You're not wrong that people misuse Excel. You're not wrong that some workflows belong in purpose-built tools. You're not wrong that a shared Google Sheet is better for collaborative project tracking than a file on someone's desktop.</p>
@@ -1358,7 +1358,7 @@ const ARTICLES = [
 </ol>
 <p>This isn't a future where Excel is replaced. It's a future where Excel becomes even more central — the platform where AI and human expertise meet. The question isn't whether Excel will survive. It's whether your tools and skills are ready for what Excel is becoming.</p>
 <hr>
-<p><em>EXL Cloud sits at the centre of this shift — an Excel add-in with live Xero data and 15 AI-powered skills built on Anthropic's Claude. Build 3-way models, generate board packs, and run validation checks — all inside Excel. <a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">See what Excel + AI looks like →</a></em></p>`,
+<p><em>EXL Cloud sits at the centre of this shift — an Excel add-in with live Xero data and 20+ AI-powered skills built on Anthropic's Claude. Build 3-way models, generate board packs, and run validation checks — all inside Excel. <a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">See what Excel + AI looks like →</a></em></p>`,
   },
   {
     title: "How to Consolidate Multi-Entity and Multi-Currency Reporting in Xero",
@@ -1450,7 +1450,278 @@ const ARTICLES = [
 <h3>How does this compare to dedicated consolidation software like Oracle HFM or Anaplan?</h3>
 <p>Enterprise consolidation tools are designed for large, complex groups with hundreds of entities and regulatory reporting requirements. EXL Cloud is designed for SME and mid-market groups (2–20 entities) where the overhead and cost of enterprise consolidation software isn't justified. The trade-off: more manual setup, but dramatically lower cost and full visibility into the consolidation logic.</p>
 <hr>
-<p><em>EXL Cloud connects up to 5 Xero organisations to a single Excel workbook — live data, automated consolidation, and 15 AI-powered skills built on Anthropic's Claude. From $50 AUD/month. <a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">Start consolidating →</a></em></p>`,
+<p><em>EXL Cloud connects up to 5 Xero organisations to a single Excel workbook — live data, automated consolidation, and 20+ AI-powered skills built on Anthropic's Claude. From $70 AUD/month. <a href="https://exlcloud.io" target="_blank" rel="noopener noreferrer">Start consolidating →</a></em></p>`,
+  },
+  {
+    title: "The EXL Cloud AI Skills Library: Every Claude Skill Explained",
+    slug: "exl-cloud-ai-skills-library-explained",
+    author: "Lance Rubin",
+    coauthor: null,
+    date: "2026-11-14",
+    excerpt: "EXL Cloud now ships 20+ purpose-built Claude AI skills, organised into five tiers — Foundation, Data Infrastructure, Narrative, Augmentation and Advanced Workflows. Here's what each one does, when to use it, and how they fit together inside an Excel workbook connected to Xero.",
+    tags: ["AI","Claude","EXL Cloud","Financial Modelling"],
+    heroType: "grid",
+    content: `<p><strong>The short answer:</strong> The EXL Cloud AI Skills Library is a set of 20+ purpose-built skills for Anthropic's Claude that are trained on the structure of EXL Cloud workbooks. You download a skill, load it into Claude, and Claude immediately knows how that workbook is built — its sheets, its named ranges, its formatting standards and its checks. Instead of prompting from scratch every month, you invoke a skill and get the same quality of output every time.</p>
+<h2>What is a skill, and why not just prompt?</h2>
+<p>A prompt is a one-off instruction. A skill is an encoded way of working. It captures how an experienced modeller would approach a task — what to look at first, what standards to apply, what "done" looks like — and packages it so Claude follows that method consistently.</p>
+<p>That consistency is the whole point. Finance teams don't need a clever answer once; they need the same reliable answer every month-end, for every client, regardless of who presses the button. A well-built skill turns good practice into repeatable practice.</p>
+<p>Every EXL Cloud skill follows the same rules as the workbooks themselves: blue inputs, black formulas, no hardcoded numbers in calculation blocks, a validation sheet that tells you whether the model is healthy, and a change log so you can see what was done and when.</p>
+<h2>Tier 1 — Foundation</h2>
+<p>These two skills set the standard everything else is built on. Load them first.</p>
+<ul>
+<li><strong>Skill 01 — EXL Cloud Skills Foundations.</strong> Quality benchmarking for skill development and model auditing. It defines how a skill should behave, how outputs are checked, and what gets logged.</li>
+<li><strong>Skill 02 — Best Practice Financial Modelling.</strong> Formatting, colour coding and formula standards for Excel models. When any other skill builds a sheet, it re-checks the output against Skill 02 before handing it back.</li>
+</ul>
+<h2>Tier 2 — Data Infrastructure</h2>
+<p>Bad data in means bad analysis out. These skills make sure the data feeding your models is clean and structured before anything is built on top of it.</p>
+<ul>
+<li><strong>Skill 03 — Clean &amp; Validate Data.</strong> Automated data cleanup before any reporting or modelling work begins.</li>
+<li><strong>Skill 04 — Trial Balance Mapper.</strong> Maps accounts from any accounting system into standardised categories, so a Xero chart of accounts lands in the right reporting lines.</li>
+<li><strong>Skill 05 — Period Table Builder.</strong> Builds the Period date structure that drives every time-series workbook — monthly, quarterly, financial year and actual/forecast flags.</li>
+</ul>
+<h2>Tier 3 — Narrative</h2>
+<p>Numbers without a story don't get acted on. These skills turn workbook data into the words boards and owners actually read.</p>
+<ul>
+<li><strong>Skill 06 — Monthly Commentary Generator.</strong> Professional management commentary from P&amp;L and cash flow data.</li>
+<li><strong>Skill 07 — Board Paper Drafter.</strong> Assembles a complete board-ready report from commentary and financial data.</li>
+<li><strong>Skill 08 — Cash Flow Narrative.</strong> Explains cash movements in plain English across operating, investing and financing activities.</li>
+</ul>
+<h2>Tier 4 — Augmentation</h2>
+<p>These skills add the governance layer that most spreadsheets are missing — the bits that separate a spreadsheet from a financial model.</p>
+<ul>
+<li><strong>Skill 09 — Assumption Register Builder.</strong> Scans a workbook and extracts every hardcoded assumption into a structured register.</li>
+<li><strong>Skill 10 — Anomaly Detection.</strong> Adds automated PASS/FAIL validation checks to any workbook.</li>
+<li><strong>Skill 11 — Model Documentation Generator.</strong> Auto-generates an Instructions sheet covering model structure and usage.</li>
+<li><strong>Skill 12 — Variance Analysis Reporter.</strong> Builds a structured comparison of actuals to budget, forecast or prior period.</li>
+<li><strong>Skill 13 — KPI Dashboard Formatter.</strong> A one-page executive dashboard with tiles and traffic-light indicators.</li>
+<li><strong>Skill 14 — Change Log &amp; Audit Trail.</strong> Structured change tracking sheets for every workbook.</li>
+<li><strong>Skill 15 — Meeting Prep Pack.</strong> Generates a meeting preparation pack directly from workbook data.</li>
+</ul>
+<h2>Tier 5 — Advanced Workflows</h2>
+<p>These are workbook-specific and multi-step. They're where the library has grown fastest in 2026.</p>
+<ul>
+<li><strong>Skill 16 — Weekly Cash Flow Scenario Overlay Builder.</strong> Builds scenario overlays for the EXL Cloud Weekly Cash Flow model.</li>
+<li><strong>Skill 17 — Human Capital Report Commentary.</strong> Workforce cost analysis and CFO-ready commentary from payroll data.</li>
+<li><strong>Skill 18 — Invoice &amp; Bill Pull Analysis.</strong> Analysis suite for invoice and bill data pulled from Xero.</li>
+<li><strong>Skill 19 — Performance Report Dashboard Commentary.</strong> Writes dashboard commentary for EXL Cloud Performance Reports.</li>
+<li><strong>Skill 20 — Assumption &amp; Output Reasonableness Check.</strong> Tests drivers and outputs against editable reasonable ranges and flags anything that doesn't make sense. <a href="/articles/assumption-and-output-reasonableness-checks">Read the deep dive →</a></li>
+<li><strong>Skill 21 — Model Best Practice Benchmark.</strong> Scores a workbook against a weighted best-practice criteria library and produces a findings log and a phased remediation plan with estimated fix hours. <a href="/articles/how-to-benchmark-a-financial-model-against-best-practice">Read the deep dive →</a></li>
+</ul>
+<h2>How the skills work together</h2>
+<p>The tiers are deliberately ordered. A typical month-end flow looks like this:</p>
+<ol>
+<li><strong>Pull</strong> the latest actuals from Xero with EXL Cloud (8 clicks).</li>
+<li><strong>Clean and map</strong> with Skills 03 and 04 if the chart of accounts has changed.</li>
+<li><strong>Check</strong> the model with Skills 10 and 20 — is it healthy, and do the numbers make sense?</li>
+<li><strong>Explain</strong> with Skills 06, 08 and 19 — commentary that matches the numbers.</li>
+<li><strong>Package</strong> with Skill 07 — a board paper ready for review.</li>
+</ol>
+<p>Skill 21 sits slightly outside that loop. You run it when you inherit a model, before a major decision is made on a model's output, or quarterly as a health check — it tells you how far a workbook is from best practice and what it would take to close the gap.</p>
+<h2>Where do the skills come from?</h2>
+<p>Every skill was built and tested against real EXL Cloud Gen 2 workbooks by the Model Citizn team, then refined on live client engagements. That's why they're opinionated: they encode how we actually build and review models, not a generic idea of what a model should look like.</p>
+<h2>Frequently asked questions</h2>
+<h3>Which plan includes the AI skills?</h3>
+<p>The skills library is included in the Advanced Content plan ($170 AUD/month, 5 Xero connections included). The plan also includes the 3-way driver-based model, Performance Reports, cash flow and profit scenario models, Power BI integration and HTML board packs.</p>
+<h3>Do I need a paid Claude account?</h3>
+<p>Skills are loaded into Claude, so you need access to Claude with skills enabled. Check Anthropic's current plan details for which tiers support skills.</p>
+<h3>Can I edit or extend a skill?</h3>
+<p>Yes. A skill is a structured instruction file. You can adapt it to your firm's conventions — many of our AI-Powered Accountant students do exactly that as their capstone.</p>
+<h3>Does Claude change my workbook without asking?</h3>
+<p>Skills that build sheets add new, clearly labelled tabs and log what they did in the workbook's change log. Review-type skills (like Skill 21) treat the model under review as read-only.</p>
+<hr>
+<p><em>EXL Cloud connects Excel to Xero in 8 clicks and ships 20+ Claude AI skills with the Advanced Content plan. <a href="/gen2">See the full skills library →</a></em></p>`,
+  },
+  {
+    title: "How to Benchmark a Financial Model Against Best Practice",
+    slug: "how-to-benchmark-a-financial-model-against-best-practice",
+    author: "Lance Rubin",
+    coauthor: null,
+    date: "2026-11-14",
+    excerpt: "Most model reviews end with a vague 'looks OK' or a 40-page list of nitpicks. A best-practice benchmark gives you a score, a ranked list of findings, and a costed plan to fix them. Here's how Skill 21 — the Model Best Practice Benchmark — does it.",
+    tags: ["Financial Modelling","AI","Error Checking","EXL Cloud"],
+    heroType: "target",
+    content: `<p><strong>The short answer:</strong> To benchmark a financial model, score it against a fixed library of best-practice criteria, weight each criterion by how much damage a failure would cause, and turn every low score into a specific, located, costed fix. EXL Cloud's Skill 21 — the Model Best Practice Benchmark — does exactly that with Claude, producing a scored assessment, a findings log and a phased remediation plan inside the workbook.</p>
+<h2>Why "is this model any good?" is so hard to answer</h2>
+<p>Ask three experienced modellers to review the same workbook and you'll get three different answers. One focuses on formatting. One hunts for hardcodes. One rebuilds the cash flow to see if it ties. All useful, none comparable — and none of them tell the owner what really matters: <em>how risky is this model, and what would it cost to fix?</em></p>
+<p>That's the gap a benchmark fills. Instead of opinions, you get a consistent rubric, a score you can track over time, and a remediation plan you can quote against.</p>
+<h2>What the benchmark actually measures</h2>
+<p>Skill 21 draws its criteria from the standards finance professionals already recognise — EXL Cloud's own modelling standards alongside FAST, SSRB, ICAEW, FMI and Modano best practice. Criteria are grouped into categories that follow the life of a model:</p>
+<ul>
+<li><strong>Governance &amp; Documentation</strong> — owner, purpose, instructions, version history, sign-off.</li>
+<li><strong>Structure &amp; Flow</strong> — inputs → calculations → outputs, one direction, logical sheet order.</li>
+<li><strong>Inputs</strong> — labelled input blocks, units, no business assumptions buried in formulas.</li>
+<li><strong>Formula Integrity</strong> — no broken references, no hardcoded literals in calculations, sensible function choices.</li>
+<li><strong>Consistency</strong> — row-consistent formulas across every period.</li>
+<li><strong>Checks</strong> — validation checks that cover the full range and every period, and that someone actually looks at.</li>
+<li><strong>Data &amp; Feeds</strong> — where data comes from, how it's refreshed and whether it reconciles to source.</li>
+<li><strong>Outputs &amp; Dashboards</strong> — outputs that tie back to the engine, not to a copy of it.</li>
+<li><strong>Formatting</strong> — consistent colour coding so a reader can tell inputs from formulas at a glance.</li>
+<li><strong>AI Governance</strong> — is AI involvement disclosed and logged?</li>
+<li><strong>3-Way Integrity</strong> — balance sheet balances every period, net profit rolls into retained earnings, cash ties.</li>
+</ul>
+<p>Criteria that don't apply — 3-way integrity on a pure reporting pack, for example — are marked not applicable rather than penalised.</p>
+<h2>How scoring works</h2>
+<p>Every applicable criterion is scored 0 to 4, based on evidence from the workbook itself — sheet names, cell references, counts and proportions. Each criterion also carries a severity:</p>
+<ul>
+<li><strong>Critical</strong> (weight 4) — failure could make a decision wrong. Balance sheet doesn't balance, checks don't cover the forecast.</li>
+<li><strong>High</strong> (weight 3) — failure materially increases error risk.</li>
+<li><strong>Medium</strong> (weight 2) — failure slows review or maintenance.</li>
+<li><strong>Low</strong> (weight 1) — polish.</li>
+</ul>
+<p>The headline is a severity-weighted score, with a separate score for Critical criteria so a well-formatted model can't hide a broken engine behind good presentation. Any Critical or High criterion scoring 2 or less becomes a finding.</p>
+<p>One rule matters more than any other: <strong>score content, never existence</strong>. "There is an Instructions sheet" is not evidence. "The Instructions sheet has a six-step update procedure with cell references and a 40-entry glossary" is. A sheet that exists but says nothing useful doesn't earn the points.</p>
+<h2>What you get at the end</h2>
+<p>The benchmark adds a small set of clearly labelled BM tabs to the end of the workbook, all wired together with named ranges and their own validation checks:</p>
+<ul>
+<li><strong>Control</strong> — headline score, Critical score, number of findings, estimated fix hours, and a score by category.</li>
+<li><strong>Evidence Map</strong> — what was scanned, and tie-outs proving the evidence is complete.</li>
+<li><strong>Assessment</strong> — every criterion, its score, the evidence and the gap.</li>
+<li><strong>Findings Log</strong> — each finding with its location (sheet and range) and a specific recommendation.</li>
+<li><strong>Remediation Plan</strong> — findings sequenced into dependency-ordered phases with hours.</li>
+<li><strong>Data Plumbing</strong> — every data feed into the model and how it's refreshed.</li>
+<li><strong>Validation Checks</strong> — the benchmark checks itself.</li>
+</ul>
+<h2>Fix in the right order</h2>
+<p>The remediation plan is phased so you never polish something you're about to rebuild:</p>
+<ol>
+<li><strong>Baseline &amp; governance</strong> — owner, purpose, version log, AI disclosure.</li>
+<li><strong>Stop the bleeding</strong> — balance sheet balances every period, no broken references.</li>
+<li><strong>Make the checks bite</strong> — checks cover every row and every period.</li>
+<li><strong>Strip business hardcodes</strong> — every assumption moves to an input.</li>
+<li><strong>Separate inputs and restyle</strong> — labelled input blocks, one-direction flow.</li>
+<li><strong>Formula consistency</strong> — row-consistent formulas, no external links.</li>
+<li><strong>Scenarios and outputs</strong> — a scenario switch, outputs that tie to the engine.</li>
+</ol>
+<p>Because every task carries hours, the plan doubles as a scoping document. If you're an adviser, that's the difference between "this model needs work" and a fixed-fee proposal the client can approve.</p>
+<h2>Lite run or full run?</h2>
+<p>A <strong>Lite</strong> run is a direct scan of the open workbook by Claude — fast, and ideal for a first look or an internal health check. A <strong>full</strong> run adds evidence from a dedicated formula analysis tool and a deeper review of documentation content, and is the one to use when the score will be shown to a client or a board. Every run gets a Run ID and is snapshotted, so you can show the score improving as the remediation plan is worked through.</p>
+<h2>When to run a benchmark</h2>
+<ul>
+<li>When you <strong>inherit</strong> a model from a previous adviser or employee.</li>
+<li><strong>Before</strong> a model is used for a capital raise, acquisition, lending decision or board approval.</li>
+<li><strong>Quarterly</strong> on models that are updated every month-end, to catch drift.</li>
+<li><strong>After</strong> a major rebuild, to prove the rebuild worked.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does the benchmark change my model?</h3>
+<p>No. The model under review is treated as read-only. The benchmark adds its own BM tabs and leaves your formulas alone; fixing findings is a separate, deliberate step.</p>
+<h3>Can I benchmark a model that wasn't built in EXL Cloud?</h3>
+<p>Yes. The criteria are drawn from recognised industry standards, not just EXL Cloud conventions. Non-EXL models typically score lower on the EXL-specific criteria, which is useful information in itself.</p>
+<h3>How is this different from Skill 20?</h3>
+<p>Skill 20 asks "do these numbers make sense?" Skill 21 asks "is this model built well enough to trust?" A model can pass one and fail the other. Use both. <a href="/articles/assumption-and-output-reasonableness-checks">Read about Skill 20 →</a></p>
+<hr>
+<p><em>The Model Best Practice Benchmark is Skill 21 in the EXL Cloud AI Skills Library, included with the Advanced Content plan. <a href="/articles/exl-cloud-ai-skills-library-explained">See all 20+ skills →</a></em></p>`,
+  },
+  {
+    title: "Assumption and Output Reasonableness Checks: When the Model Adds Up but Doesn't Make Sense",
+    slug: "assumption-and-output-reasonableness-checks",
+    author: "Lance Rubin",
+    coauthor: null,
+    date: "2026-11-14",
+    excerpt: "A model can balance perfectly and still be wrong. Individually sensible assumptions compound into a hockey stick, the 'worst case' never stresses cash, margins quietly improve every year. Skill 20 tests both the inputs and the outputs against reasonable ranges — and flags what doesn't make sense.",
+    tags: ["Financial Modelling","AI","Error Checking","Forecasting"],
+    heroType: "search",
+    content: `<p><strong>The short answer:</strong> A reasonableness check tests whether a model's assumptions sit within sensible ranges and whether its outputs behave plausibly — not whether the arithmetic is right. EXL Cloud's Skill 20 builds a single Assumption &amp; Output Reasonableness Check sheet in your workbook that links live to every key driver and headline output, compares each to editable low/high bounds, and flags anything outside the range for review.</p>
+<h2>Balanced is not the same as right</h2>
+<p>Every modeller knows the relief of a balance sheet check turning green. But a balanced model only tells you the double entry works. It says nothing about whether the story the model tells is believable.</p>
+<p>The errors that hurt in practice usually aren't #REF!s. They're things like:</p>
+<ul>
+<li>A 30% growth rate copied across every revenue stream, with no differentiation.</li>
+<li>Individually reasonable growth assumptions that compound into a five-year hockey stick.</li>
+<li>A "worst case" scenario that never actually brings cash close to zero.</li>
+<li>Gross margin that improves every single year with nothing in the model driving it.</li>
+<li>A corporate tax rate of 0% because the input was never filled in.</li>
+</ul>
+<p>None of these break a formula. All of them can break a decision.</p>
+<h2>Two checks, one sheet</h2>
+<p>Skill 20 deliberately pairs two checks, because assumptions and outputs fail in different ways.</p>
+<h3>1. Assumption reasonableness</h3>
+<p>Claude finds the model's driver sheets by what's on them — scenario manager, revenue and cost drivers, salaries, tax, working capital, assets and capital — rather than relying on sheet names, which vary between workbooks. It harvests the key value-drivers only (growth rates, CPI, margins, working capital days, salary increases, GST, company tax, depreciation lives, discount rates) and builds a table:</p>
+<ul>
+<li><strong>Source cell</strong> — exactly where the assumption lives.</li>
+<li><strong>Live value</strong> — a formula link, so the check updates when the model does.</li>
+<li><strong>Reasonable low / high</strong> — editable bounds, with the rationale written down.</li>
+<li><strong>Status</strong> — passed, or flagged above/below range.</li>
+</ul>
+<h3>2. Output reasonableness</h3>
+<p>The second section looks at what the drivers produce, across the forecast horizon and by scenario where available:</p>
+<ul>
+<li><strong>Trend sanity</strong> — does revenue, EBITDA or margin move in a way the drivers explain?</li>
+<li><strong>Cash and liquidity</strong> — what's the minimum cash position, and when?</li>
+<li><strong>Margin and ratio bands</strong> — are gross and EBITDA margins within a plausible band for the business?</li>
+<li><strong>Scenario ordering</strong> — is Worst ≤ Base ≤ Best for the metrics that matter? If not, the scenarios aren't doing their job.</li>
+</ul>
+<p>A single summary at the top gives the whole picture in four numbers: checks tested, passed, flagged for review, and judgement items to verify.</p>
+<h2>Why the bounds are editable — and stable</h2>
+<p>There's no universal "reasonable" growth rate. A SaaS start-up and a mature construction business have very different ranges. So the bounds are inputs: blue cells you can change, with the rationale next to them.</p>
+<p>Just as important, when the check is re-run next month, the existing bounds are carried forward unchanged. Only genuinely new assumptions get new bounds. If the standard moved every time you ran it, the check would just be inventing a new rubric each month and you'd never know whether the model had changed or the test had. A reasonableness check is only useful if it's consistent.</p>
+<h2>Flags are prompts, not verdicts</h2>
+<p>A flag doesn't mean the assumption is wrong. A 40% growth rate might be entirely justified by a signed contract. The point is that someone has to look at it and write down why. That written rationale is what turns a model from "the spreadsheet says so" into something a lender, investor or board can rely on.</p>
+<h2>Where it fits in the review process</h2>
+<ol>
+<li><strong>Validation checks</strong> (Skill 10) — does the model work? Balance sheet, cash, retained earnings.</li>
+<li><strong>Reasonableness check</strong> (Skill 20) — do the numbers make sense?</li>
+<li><strong>Commentary</strong> (Skills 06, 08) — explain the numbers you now trust.</li>
+<li><strong>Benchmark</strong> (Skill 21) — periodically, is the model built well enough to keep trusting? <a href="/articles/how-to-benchmark-a-financial-model-against-best-practice">How benchmarking works →</a></li>
+</ol>
+<h2>Frequently asked questions</h2>
+<h3>Is this the same as an assumption register?</h3>
+<p>No. An assumption register (Skill 09) catalogues every input. A reasonableness check tests only the key value-drivers and the headline outputs for plausibility. They complement each other.</p>
+<h3>Can I run just the assumption or just the output section?</h3>
+<p>Yes. Ask for one and Skill 20 builds only that section; the summary then reports on that section alone.</p>
+<h3>Does it work on models built outside EXL Cloud?</h3>
+<p>It's designed for EXL Cloud and Model Citizn 3-way workbooks, but because it finds sheets by content rather than by name, it adapts well to other driver-based models.</p>
+<hr>
+<p><em>Skill 20 is part of the EXL Cloud AI Skills Library — 20+ Claude skills included with the Advanced Content plan. <a href="/articles/exl-cloud-ai-skills-library-explained">Explore the library →</a></em></p>`,
+  },
+  {
+    title: "Zero Hardcoding: The EXL Cloud Standard for Driver-Based 3-Way Models",
+    slug: "zero-hardcoding-driver-based-3-way-model-standards",
+    author: "Lance Rubin",
+    coauthor: null,
+    date: "2026-11-14",
+    excerpt: "Blue inputs, black formulas, no numbers typed into calculations, a full three-way reconciliation, a dedicated validation sheet and a change log in every workbook. These are the EXL Cloud modelling standards — and in the age of AI they matter more, not less.",
+    tags: ["Financial Modelling","Excel","3-Way Model","EXL Cloud"],
+    heroType: "flow",
+    content: `<p><strong>The short answer:</strong> The EXL Cloud modelling standard is a set of non-negotiable rules for driver-based financial models: zero hardcoding in calculations, blue inputs and black formulas, a fully reconciled three-way model (P&amp;L, balance sheet and cash flow), a dedicated error and validation sheet, and a change log in every workbook. Every EXL Cloud Gen 2 workbook and every EXL Cloud AI skill is built to this standard.</p>
+<h2>Why standards, and why now?</h2>
+<p>I've reviewed a lot of models over two decades in banking, Big 4 and advisory. The models that failed rarely failed because of a complex formula. They failed because someone typed a number into a calculation row in 2019 and nobody noticed it was still there in 2023.</p>
+<p>AI raises the stakes. Claude can now build and extend a model in minutes. Without standards, you just get bad models faster. With standards, AI becomes a force multiplier — because a model built to a known standard can be checked against that standard, by a human or by another skill.</p>
+<h2>The six rules</h2>
+<h3>1. Zero hardcoding</h3>
+<p>No business number is ever typed into a calculation. Growth rates, prices, headcount, days — they all live in labelled input cells and are referenced. The only literals allowed in formulas are structural constants (12 months in a year, 1 for a flag).</p>
+<p><em>Why it matters:</em> a hardcode is invisible. It doesn't change when the assumption changes, and it's the single most common cause of models quietly giving the wrong answer.</p>
+<h3>2. Blue inputs, black formulas</h3>
+<p>Inputs are blue font. Formulas are black. Links to other sheets follow a consistent convention. Anyone opening the model knows instantly what they're allowed to change and what they shouldn't touch.</p>
+<h3>3. Driver-based, one direction</h3>
+<p>Inputs → calculations → outputs. Revenue is built from drivers (customers × price, jobs × average value), not typed as a total. Calculations flow one way, so a change to a driver ripples predictably through to the outputs.</p>
+<h3>4. Full three-way reconciliation</h3>
+<p>The P&amp;L, balance sheet and cash flow statement are fully integrated. Net profit rolls into retained earnings. The cash flow statement reconciles to the movement in cash on the balance sheet. The balance sheet balances in every single period, not just the last one.</p>
+<h3>5. A dedicated error and validation sheet</h3>
+<p>Every check — balance sheet balances, cash ties, retained earnings rolls forward, inputs within range — rolls up to a single sheet with a single answer: errors = 0, or not. That status is displayed on the cover and on every output, so nobody can present a model that's quietly broken.</p>
+<h3>6. A change log in every workbook</h3>
+<p>Every structural change is logged: what changed, where, why, and who did it. When AI is involved, that's logged too. Six months later, the change log is the difference between understanding a model and reverse-engineering it.</p>
+<h2>What this looks like in an EXL Cloud workbook</h2>
+<p>The Gen 2 rebuild applied these standards to every EXL Cloud workbook. Each one now includes a dedicated Instructions sheet, consistent navigation and formatting, plain-English notes on formulas, and validation checks wired to a single status. The 3-Way Driver-Based Financial Model pulls actuals straight from Xero, so the forecast starts from real numbers, not a copy-paste.</p>
+<p>Want to see it in action? Try the <a href="/future">interactive 3-way model demo</a> — move the drivers and watch the P&amp;L, balance sheet and cash flow respond together.</p>
+<h2>Standards make AI trustworthy</h2>
+<p>This is the part most people miss. When a model follows known rules, AI can check it against those rules:</p>
+<ul>
+<li><strong>Skill 02</strong> enforces the formatting and formula standards whenever Claude builds a sheet.</li>
+<li><strong>Skill 09</strong> extracts every hardcoded assumption into a register — and finds the ones that shouldn't be there.</li>
+<li><strong>Skill 10</strong> adds PASS/FAIL validation checks.</li>
+<li><strong>Skill 21</strong> benchmarks the whole model and tells you exactly where it falls short. <a href="/articles/how-to-benchmark-a-financial-model-against-best-practice">How the benchmark works →</a></li>
+</ul>
+<p>Without a standard, an AI review can only tell you what it thinks. With one, it can tell you what's missing, where, and how long it'll take to fix.</p>
+<h2>Frequently asked questions</h2>
+<h3>Is a single hardcode really a problem?</h3>
+<p>One hardcode in a model that nobody else will ever touch is a small risk. One hardcode in a model that's rolled forward monthly, shared with a lender and extended by AI is a time bomb. The rule is zero because "a few" never stays a few.</p>
+<h3>Do these standards apply to models built outside EXL Cloud?</h3>
+<p>Yes. They're consistent with recognised standards like FAST, SSRB and ICAEW guidance. EXL Cloud just makes them the default.</p>
+<h3>Where can I learn to build models this way?</h3>
+<p>Our free Lightning Lessons on Maven cover the fundamentals, and the AI-Powered Accountant program goes deep on building and reviewing models with Claude. EXL Cloud subscribers receive 45% off the program.</p>
+<hr>
+<p><em>Every EXL Cloud Gen 2 workbook is built to these standards and connects to Xero in 8 clicks. <a href="/features">Explore the workbooks →</a></em></p>`,
   },
 ];
 
