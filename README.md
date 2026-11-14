@@ -1,6 +1,8 @@
 # exlcloud.io
 
-Source for **https://exlcloud.io**. Built with [Astro](https://astro.build) (static HTML, React only for the few
+Source for **https://exlcloud.io**. Team editing guide: **[HOW-TO-UPDATE.md](HOW-TO-UPDATE.md)**.
+
+ Built with [Astro](https://astro.build) (static HTML, React only for the few
 interactive pieces) and deployed to GitHub Pages by GitHub Actions.
 
 ## Where things live
@@ -15,7 +17,8 @@ interactive pieces) and deployed to GitHub Pages by GitHub Actions.
 | Interactive pieces | `src/components/islands/*.jsx` (product carousel, board-pack demo, hero video, Future model, download form) |
 | Colours, font, radii | `src/lib/theme.js` |
 | Shared CSS (responsive rules, article typography) | `src/styles/global.css` |
-| Images, videos, logos, CNAME, robots.txt | `public/` (served from the site root, so `public/images/x.png` → `/images/x.png`) |
+| Images, videos, logos | `public/` (served from the site root, so `public/images/x.png` → `/images/x.png`) |
+| robots.txt (staging vs live) | `src/pages/robots.txt.js` — driven by `SITE_ENV` |
 
 ### Add a skill
 1. Copy an existing file in `src/content/skills/`, name it `22-your-skill.md`.
@@ -41,11 +44,27 @@ npm run build     # production build into dist/
 
 Every pull request runs `check` + `build` in GitHub Actions; merges to `main` deploy automatically.
 
-## One-time switch-over (from the old single-file site)
+## Staging, then launch (new-repo approach)
 
-The old site was served straight from the repo root. The new one is built by Actions, so **before merging this
-branch into `main`**: repo **Settings → Pages → Build and deployment → Source → "GitHub Actions"**.
-The live site keeps serving until the first Actions deploy replaces it. Custom domain (`exlcloud.io`) stays as is.
+This site is deployed from its **own repo** to a staging address first; the old site keeps serving exlcloud.io from
+`Model-Citizn/exlcloud-public` untouched until launch.
+
+**Set up staging (once)**
+1. New repo (e.g. `Model-Citizn/exlcloud-site`) containing this code.
+2. Settings → Pages → Source = **GitHub Actions**. Custom domain = **beta.exlcloud.io**, tick *Enforce HTTPS* once offered.
+3. DNS: add `CNAME  beta  →  model-citizn.github.io`.
+4. Leave the `SITE_ENV` variable **unset** → every page is `noindex`, `robots.txt` disallows all, amber staging bar shows.
+
+**Launch checklist** (do it out of hours)
+1. Final review on beta.exlcloud.io; HubSpot `LEAD_FORM` IDs set and a test lead received.
+2. Settings → Secrets and variables → Actions → Variables → add `SITE_ENV` = `production` (makes pages indexable, removes the bar).
+3. Old repo `exlcloud-public`: Settings → Pages → remove custom domain `exlcloud.io`.
+4. New repo: Settings → Pages → custom domain `exlcloud.io` → wait for the certificate (minutes, up to ~1 hour) → *Enforce HTTPS*.
+5. Actions → re-run the latest deploy so the production build goes out.
+6. Check https://exlcloud.io, /robots.txt (should allow), a skill page and an article. Resubmit `https://exlcloud.io/sitemap-index.xml` in Google Search Console.
+
+**Roll back:** move the custom domain back to `exlcloud-public` (step 3/4 in reverse). The old site is unchanged there.
+Keep the old repo for a few weeks before archiving it.
 
 ## Backups & rollback
 

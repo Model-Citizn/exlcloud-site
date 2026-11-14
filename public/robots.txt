@@ -1,9 +1,0 @@
-# EXL Cloud - exlcloud.io
-# AI crawlers welcome (Answer Engine Optimisation).
-User-agent: *
-Allow: /
-Disallow: /dl-3way
-Disallow: /dl-performance
-Disallow: /dl-cashflow
-
-Sitemap: https://exlcloud.io/sitemap-index.xml

@@ -1,6 +1,9 @@
 name: Build and deploy exlcloud.io
 # Builds the Astro site and publishes it to GitHub Pages.
-# One-time setup: repo Settings → Pages → Build and deployment → Source = "GitHub Actions".
+# One-time setup: repo Settings → Pages → Build and deployment → Source = "GitHub Actions",
+# and set the custom domain there (beta.exlcloud.io for staging, exlcloud.io once live).
+# Search visibility: repo variable SITE_ENV. Unset = staging (noindex everywhere).
+# Set SITE_ENV = production only when this repo serves exlcloud.io.
 # Pull requests are built and checked but NOT deployed.
 on:
   push:
@@ -29,6 +32,8 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+        env:
+          SITE_ENV: ${{ vars.SITE_ENV || 'staging' }}
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
         with:

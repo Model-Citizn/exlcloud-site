@@ -23,6 +23,14 @@ export const SITE = {
 };
 
 /* Headline skills number shown in copy. The real list is the `skills` content collection (src/content/skills). */
+/*
+ * Search-engine visibility. Set by the build environment, not in this file:
+ *   SITE_ENV=production → indexable (robots allow, no noindex tags)   ← only the live exlcloud.io build
+ *   anything else       → staging: every page noindex, robots.txt disallows all, "Staging" banner shown
+ * In GitHub: repo Settings → Secrets and variables → Actions → Variables → SITE_ENV.
+ */
+export const IS_PRODUCTION = (typeof process !== "undefined" && process.env.SITE_ENV === "production") || import.meta.env?.SITE_ENV === "production";
+
 export const SKILLS_LABEL = "20+";
 
 export const PLANS = {

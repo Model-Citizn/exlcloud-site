@@ -5,7 +5,7 @@
  */
 import Nav from "../components/pages/Nav.jsx";
 import Footer from "../components/pages/Footer.jsx";
-import { SITE, LINKS } from "../lib/site.js";
+import { SITE, LINKS, IS_PRODUCTION } from "../lib/site.js";
 import { orgJsonLd } from "../lib/seo.js";
 import "../styles/global.css";
 
@@ -25,6 +25,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const canonicalUrl = canonical || SITE.url + (path === "/" ? "/" : path);
 const image = ogImage ? new URL(ogImage, SITE.url).href : `${SITE.url}/images/logo-exlcloud500.png`;
 const ld = [orgJsonLd(), ...jsonLd];
+const indexable = IS_PRODUCTION && !noindex;
 ---
 <!doctype html>
 <html lang="en-AU">
@@ -36,7 +37,7 @@ const ld = [orgJsonLd(), ...jsonLd];
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://api.hsforms.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.hsforms.com" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-snippet:-1, max-image-preview:large"} />
+    <meta name="robots" content={indexable ? "index, follow, max-snippet:-1, max-image-preview:large" : "noindex, nofollow"} />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:site_name" content="EXL Cloud" />
     <meta property="og:type" content={ogType} />
@@ -62,6 +63,7 @@ const ld = [orgJsonLd(), ...jsonLd];
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    {!IS_PRODUCTION && <div class="staging-bar" role="note">Staging preview — hidden from search engines. Live site: <a href="https://exlcloud.io">exlcloud.io</a></div>}
     <Nav current={path} />
     <main id="main"><slot /></main>
     <Footer />
