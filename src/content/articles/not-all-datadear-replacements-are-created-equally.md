@@ -86,4 +86,4 @@ kind: "hub"
 <p>We have had comments from customers that we seem to be the closest solution that fits their needs and more.</p>
 <p>Every business and firm needs to assess the tool relative to where they are now and where they want to go.</p>
 <p>Whilst it's great to have alternatives, make sure you choose the right tool that suits the future strategy of your firm.</p>
-<p>If you want to check out more, head over to <a href="https://exlcloud.io/" target="_blank" rel="noopener noreferrer"><strong>our website</strong></a> and you can <a href="https://exlcloud.io/sign-up" target="_blank" rel="noopener noreferrer"><strong>start a free 7-day trial</strong></a>.</p>
+<p>If you want to check out more, head over to <a href="https://exlcloud.io/" target="_blank" rel="noopener noreferrer"><strong>our website</strong></a> and you can <a href="/pricing"><strong>start a free 7-day trial</strong></a>.</p>
