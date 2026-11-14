@@ -5,7 +5,7 @@ date: 2019-03-12
 excerpt: "Just because you can drive a car doesn't mean you can be a Formula 1 race car driver...."
 tags: ["Financial Modelling","Error Checking","Cash Flow"]
 heroType: "target"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/forecasting-vs-modelling/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/forecasting-vs-modelling/"
 kind: "hub"
 ---
 <p>Just because you can drive a car doesn't mean you can be a Formula 1 race car driver.</p>

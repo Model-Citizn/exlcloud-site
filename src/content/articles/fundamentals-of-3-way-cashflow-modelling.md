@@ -6,7 +6,7 @@ date: 2022-11-03
 excerpt: "A 3-way model links the P&L, balance sheet and cash flow so every assumption flows through to cash. Lance Rubin and Furqan Baig walk through the fundamentals — working capital, drivers and reconciliation — and how to build the skill."
 tags: ["Financial Modelling","Excel","Error Checking"]
 heroType: "flow"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/3-way-financial-modelling/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/3-way-financial-modelling/"
 kind: "hub"
 ---
 <h3>Introduction to the Co-author</h3>

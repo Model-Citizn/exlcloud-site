@@ -5,7 +5,7 @@ date: 2020-01-31
 excerpt: "If you have recently been for a job interview or at least just taken a small peek through the door called opportunity then you may have noticed something emerging regarding a new key skill requirement, which you may or m..."
 tags: ["Financial Modelling","Excel","Error Checking"]
 heroType: "door"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/why-financial-modelling-skills-will-be-a-big-career-door-opener-for-emerging-accounting-and-finance-talent/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/why-financial-modelling-skills-will-be-a-big-career-door-opener-for-emerging-accounting-and-finance-talent/"
 kind: "hub"
 ---
 <h3>Background</h3>

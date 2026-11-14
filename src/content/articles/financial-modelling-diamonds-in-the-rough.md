@@ -5,7 +5,7 @@ date: 2021-11-26
 excerpt: "Why is it so hard to find Finance staff with good financial modelling skills?..."
 tags: ["Financial Modelling","Excel","Virtual CFO"]
 heroType: "diamond"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modelling-diamonds-in-the-rough/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modelling-diamonds-in-the-rough/"
 kind: "hub"
 ---
 <p>Why is it so hard to find Finance staff with good financial modelling skills?</p>

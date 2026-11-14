@@ -5,7 +5,7 @@ date: 2022-10-03
 excerpt: "Fast forward to today and next month (end of October 2022) the data connection is going to be pulled (which was announced a few months ago) leaving many who have not prepared for this event exposed...."
 tags: ["Financial Modelling","Excel","SaaS"]
 heroType: "compare"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/datadear-replacements/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/datadear-replacements/"
 kind: "hub"
 ---
 <h3>Background</h3>

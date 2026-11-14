@@ -28,7 +28,7 @@ interactive pieces) and deployed to GitHub Pages by GitHub Actions.
 2. `npm run images` creates the hero/social image. Commit both.
 
 `kind` controls where it appears on `/articles`: `product` (EXL Cloud & skills), `guide` (Xero + Excel how-tos),
-`hub` (republished from the Model Citizn Knowledge Hub — set `canonical:` to the hub URL so Google credits the original).
+`hub` (republished from the Model Citizn Knowledge Hub — set `originalUrl:` to show an "Originally published on…" note).
 
 ## Run it locally
 

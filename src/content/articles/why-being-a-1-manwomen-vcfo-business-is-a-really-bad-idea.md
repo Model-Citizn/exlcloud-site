@@ -5,7 +5,7 @@ date: 2019-01-09
 excerpt: "3 years ago I stepped out of the corporate world and became, what I didn't realise at the time, a virtual CFO for Banjo (Fintech lender)...."
 tags: ["Financial Modelling","Virtual CFO","Cash Flow"]
 heroType: "warning"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/vcfo-business/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/vcfo-business/"
 kind: "hub"
 ---
 <h3>Background</h3>

@@ -5,7 +5,7 @@ date: 2018-05-02
 excerpt: "If you haven’t heard of the outcry for the death of Excel then you must be living under a rock...."
 tags: ["Financial Modelling","Excel","Virtual CFO"]
 heroType: "debate"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/excel-is-dead/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/excel-is-dead/"
 kind: "hub"
 ---
 <h3>Lance (83kg 6 ft) vs Chris (110 kg 6 ft 2)</h3>

@@ -6,7 +6,7 @@ date: 2022-12-05
 excerpt: "SaaS businesses live and die by recurring revenue, churn and customer acquisition cost — and their financial models need to reflect that. Lance Rubin and Chartered Management Accountant Chironjit explain how SaaS models differ from traditional ones and where to start building your skills."
 tags: ["Financial Modelling","SaaS","Error Checking"]
 heroType: "chart"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/saas-financial-modelling/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/saas-financial-modelling/"
 kind: "hub"
 ---
 <h3>Introduction to the Co-author</h3>

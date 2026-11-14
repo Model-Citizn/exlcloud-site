@@ -52,9 +52,9 @@ const ld = {
   </section>
   <section style={{ padding: "60px 24px 80px" }}>
     <article style={{ maxWidth: "800px", margin: "0 auto" }}>
-      {a.canonical && (
+      {a.originalUrl && (
         <p style={{ fontFamily: F, fontSize: "14px", color: C.gD, background: C.warmBg, border: `1px solid ${C.gL}`, borderRadius: `${R.sm}px`, padding: "12px 16px", margin: "0 0 28px" }}>
-          Originally published on the <a href={a.canonical} target="_blank" rel="noopener" style={{ color: C.priL, textDecoration: "underline" }}>Model Citizn Knowledge Hub ↗</a>
+          Originally published on the <a href={a.originalUrl} target="_blank" rel="noopener" style={{ color: C.priL, textDecoration: "underline" }}>Model Citizn Knowledge Hub ↗</a>
         </p>
       )}
       <div style={{ background: C.pale, borderLeft: `4px solid ${C.priA}`, borderRadius: "0 12px 12px 0", padding: "20px 24px", marginBottom: "36px" }}>

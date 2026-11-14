@@ -5,7 +5,7 @@ date: 2019-02-09
 excerpt: "Over the past year I've met many finance professionals as part of our FOFM world tour and future of finance workshops...."
 tags: ["Excel","Career","Excel Functions"]
 heroType: "function"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/excel-vlookup-vs-index/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/excel-vlookup-vs-index/"
 kind: "hub"
 ---
 <p>Over the past year I've met many finance professionals as part of our FOFM world tour and future of finance workshops.</p>

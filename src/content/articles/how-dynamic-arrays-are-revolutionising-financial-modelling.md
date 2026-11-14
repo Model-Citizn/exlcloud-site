@@ -6,7 +6,7 @@ date: 2023-06-01
 excerpt: "When you see Dynamic Array/s (“DA”) functions, they will blow your mind as you start to think about all the implications for modelling, the countless hours they can save you and the ease with which your models can be ext..."
 tags: ["Financial Modelling","Excel","Dynamic Arrays"]
 heroType: "grid"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modelling-arrays/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modelling-arrays/"
 kind: "hub"
 ---
 <h3>Introduction to the co-authors</h3>

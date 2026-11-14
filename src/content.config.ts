@@ -23,8 +23,10 @@ const articles = defineCollection({
     heroType: z.string().default("grid"),
     /* product = EXL Cloud product & skills; guide = how-to for EXL users; hub = republished from the MC Knowledge Hub */
     kind: z.enum(["product", "guide", "hub"]).default("product"),
-    /* set for republished Knowledge Hub posts so search engines credit the original */
+    /* override the canonical URL (rarely needed) */
     canonical: z.string().url().optional(),
+    /* where a republished post first appeared (e.g. the Model Citizn Knowledge Hub) — shown as a note */
+    originalUrl: z.string().url().optional(),
     /* skill numbers this article is about — shown as links on the article and on those skill pages */
     skills: z.array(z.number().int().min(1)).default([]),
     draft: z.boolean().default(false),

@@ -5,7 +5,7 @@ date: 2023-01-03
 excerpt: "18 months ago I jumped into a portfolio career by being a permanent part time CFO for Banjo (start-up fintech lender) whilst launching my own financial modeling consulting business, Model Citizn...."
 tags: ["Financial Modelling","Virtual CFO","Career"]
 heroType: "balance"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/virtual-cfo-the-good-bad-and-the-ugly/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/virtual-cfo-the-good-bad-and-the-ugly/"
 kind: "hub"
 ---
 <h3>Background</h3>

@@ -5,7 +5,7 @@ date: 2017-06-30
 excerpt: "Have you noticed lately how many finance roles have “financial modelling” listed as a core skill? Financial modelling is now one of the most sought after skills in today’s corporate world and demand for financial modelli..."
 tags: ["Financial Modelling","Excel","Virtual CFO"]
 heroType: "trending"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modelling-demand/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modelling-demand/"
 kind: "hub"
 ---
 <h3>Finance Roles with new requirements</h3>

@@ -5,7 +5,7 @@ date: 2022-03-25
 excerpt: "There is certainly a big difference between a spreadsheeter and a financial modeler...."
 tags: ["Financial Modelling","Excel","Error Checking"]
 heroType: "brain"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modeler-mindset/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/financial-modeler-mindset/"
 kind: "hub"
 ---
 <p>There is certainly a big difference between a spreadsheeter and a financial modeler.</p>

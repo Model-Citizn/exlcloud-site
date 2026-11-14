@@ -6,7 +6,7 @@ date: 2023-07-14
 excerpt: "Every spreadsheet contains errors — the question is whether you catch them before your stakeholders do. Lance Rubin and model auditor Maarten (Spreadsheetsoftware) share practical error-check techniques, how to teach them, and how AI and automation change spreadsheet risk."
 tags: ["Financial Modelling","Excel","Error Checking"]
 heroType: "shield"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/error-checks-excel/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/error-checks-excel/"
 kind: "hub"
 ---
 <h3>Introduction to the co-authors</h3>

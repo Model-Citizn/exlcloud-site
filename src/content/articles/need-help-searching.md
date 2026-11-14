@@ -5,7 +5,7 @@ date: 2019-03-12
 excerpt: "After meeting over 50 finance professionals and accountants last week, it remains absolutely clear to me that, the majority of people have no idea which rabbit hole of technology to go down to assess the best advisory to..."
 tags: ["Excel","Cash Flow","Forecasting"]
 heroType: "search"
-canonical: "https://www.modelcitizn.com/knowledge-hub/blogs/best-advisory-tool/"
+originalUrl: "https://www.modelcitizn.com/knowledge-hub/blogs/best-advisory-tool/"
 kind: "hub"
 ---
 <p>After meeting over 50 finance professionals and accountants last week, it remains absolutely clear to me that, the majority of people have no idea which rabbit hole of technology to go down to assess the best advisory tools.</p>
