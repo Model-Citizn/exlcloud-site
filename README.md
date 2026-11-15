@@ -19,6 +19,7 @@ interactive pieces) and deployed to GitHub Pages by GitHub Actions.
 | Shared CSS (responsive rules, article typography) | `src/styles/global.css` |
 | Images, videos, logos | `public/` (served from the site root, so `public/images/x.png` → `/images/x.png`) |
 | robots.txt (staging vs live) | `src/pages/robots.txt.js` — driven by `SITE_ENV` |
+| llms.txt / llms-full.txt (for AI assistants) | Generated automatically from `src/lib/site.js` + the skills and articles — no editing needed. Logic in `src/lib/llms.js` |
 
 ### Add a skill
 1. Copy an existing file in `src/content/skills/`, name it `22-your-skill.md`.
