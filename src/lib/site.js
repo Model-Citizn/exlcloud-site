@@ -66,6 +66,7 @@ export const LINKS = {
   linkedin: "https://www.linkedin.com/company/exl-cloud",
   facebook: "https://www.facebook.com/EXLCloud",
   x: "https://x.com/exl_cloud",
+  youtube: "https://www.youtube.com/@exlcloud?sub_confirmation=1", // opens the subscribe prompt
   explainerVideo: "/uploads/exlcloud-2min-intro.mp4",
   heroVideo: "/images/hero-video.mp4",
 };
