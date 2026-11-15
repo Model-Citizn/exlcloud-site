@@ -2,32 +2,53 @@
 /*
  * Home-page hero background video — plain HTML (not React) so the muted/autoplay/playsinline
  * attributes are in the markup: Safari and embedded previews only autoplay when they are.
- * Behaviour matches the live site: loads ~1.5 s after the page, skipped on data-saver / 2G,
- * shows a still first frame when the visitor's OS asks for reduced motion.
+ * Loads ~1.5 s after the page and is skipped on data-saver / 2G.
+ * Plays for every visitor, including those whose OS asks for reduced motion (Lance's call, Nov 2026).
+ * The small pause button (bottom-right) is the stop control WCAG 2.2.2 requires for auto-playing motion.
  */
 import { LINKS } from "../lib/site.js";
 ---
 <video id="hero-video" muted autoplay loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src={LINKS.heroVideo}
   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:0;pointer-events:none"></video>
+<button id="hero-video-toggle" type="button" aria-label="Pause background video" title="Pause background video"
+  style="position:absolute;right:16px;bottom:16px;z-index:2;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);background:rgba(0,0,0,0.25);color:rgba(255,255,255,0.75);display:none;align-items:center;justify-content:center;cursor:pointer;padding:0">
+  <svg data-icon="pause" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1" width="3" height="10" rx="1" fill="currentColor"/><rect x="7" y="1" width="3" height="10" rx="1" fill="currentColor"/></svg>
+  <svg data-icon="play" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" style="display:none"><path d="M3 1.5v9l7.5-4.5z" fill="currentColor"/></svg>
+</button>
 <script>
   const v = document.getElementById("hero-video") as HTMLVideoElement | null;
+  const btn = document.getElementById("hero-video-toggle") as HTMLButtonElement | null;
   if (v) {
     const conn = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
     const slow = conn && (conn.saveData || /(2g|slow-2g)/.test(conn.effectiveType || ""));
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    let userPaused = false;
+    const sync = () => {
+      if (!btn) return;
+      const paused = v.paused;
+      btn.setAttribute("aria-label", paused ? "Play background video" : "Pause background video");
+      btn.title = btn.getAttribute("aria-label")!;
+      (btn.querySelector('[data-icon="pause"]') as SVGElement).style.display = paused ? "none" : "";
+      (btn.querySelector('[data-icon="play"]') as SVGElement).style.display = paused ? "" : "none";
+    };
     if (!slow) {
       setTimeout(() => {
         v.muted = true; /* belt and braces for browsers that only check the property */
         v.src = v.dataset.src!;
         v.style.animation = "heroFadeIn 2s ease forwards";
-        if (reduced) { v.removeAttribute("autoplay"); v.preload = "metadata"; v.load(); return; } /* still first frame */
         v.load();
-        const tryPlay = () => v.play().catch(() => {
-          /* autoplay refused (e.g. low-power mode): start on the visitor's first interaction */
-          const go = () => { v.play().catch(() => {}); ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => removeEventListener(e, go)); };
+        v.addEventListener("play", () => { if (btn) btn.style.display = "flex"; sync(); });
+        v.addEventListener("pause", sync);
+        btn?.addEventListener("click", () => {
+          if (v.paused) { userPaused = false; v.play().catch(() => {}); } else { userPaused = true; v.pause(); }
+        });
+        v.play().catch(() => {
+          /* autoplay refused (e.g. battery saver): start on the visitor's first interaction */
+          const go = () => {
+            if (!userPaused) v.play().catch(() => {});
+            ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => removeEventListener(e, go));
+          };
           ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => addEventListener(e, go, { once: true, passive: true }));
         });
-        tryPlay();
       }, 1500);
     }
   }
