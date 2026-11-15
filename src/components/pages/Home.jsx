@@ -155,8 +155,14 @@ const Home = ({ heroVideo, carousel, boardPack }) =>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
         <VideoLocal />
         <Video id="qf1pEpPoYVg" title="3-Way Financial Model" />
-        <Video id="Apty2pmgtYk" title="Start Menu & Navigation" />
+        <Video id="wJsM4He8SKs" title="Cash Flow Scenario Model" />
+        <Video id="Oz9KWoXE00c" title="Start Menu & Navigation" />
         <Video id="fa22TR9MI-Y" title="Account Transactions Pull" />
+        <Video id="Apty2pmgtYk" title="Install the Excel Add-in" />
+      </div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, flexWrap: "wrap", marginTop: 40 }}>
+        <span style={{ fontFamily: F, fontSize: 15, color: C.g, textAlign: "center" }}>More walkthroughs and masterclasses on YouTube</span>
+        <Btn href={LINKS.youtube} variant="dark">Subscribe on YouTube</Btn>
       </div>
     </Sec>
 

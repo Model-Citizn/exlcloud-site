@@ -50,6 +50,10 @@ const Support = () =>
         <Video id="DXcQr9_tqIA" title="Advanced Expense Analysis with Weel" />
         <Video id="1DSV5rXLfbY" title="Cash Flow Modelling Webinar" />
       </div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, flexWrap: "wrap", marginTop: 40 }}>
+        <span style={{ fontFamily: F, fontSize: 15, color: C.g, textAlign: "center" }}>New walkthroughs land on our YouTube channel first</span>
+        <Btn href={LINKS.youtube} variant="dark">Subscribe on YouTube</Btn>
+      </div>
     </Sec>
   </>;
 

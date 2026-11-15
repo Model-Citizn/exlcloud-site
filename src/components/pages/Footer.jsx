@@ -30,7 +30,7 @@ const Footer = () =>
       <div>
         <div style={{ color: C.w, fontFamily: F, fontWeight: 600, fontSize: 13, marginBottom: 18, letterSpacing: 0.3 }}>Connect</div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {[["LinkedIn", LINKS.linkedin], ["Facebook", LINKS.facebook], ["X / Twitter", LINKS.x]].map(([l, u]) =>
+          {[["YouTube", LINKS.youtube], ["LinkedIn", LINKS.linkedin], ["Facebook", LINKS.facebook], ["X / Twitter", LINKS.x]].map(([l, u]) =>
         <a key={l} href={u} target="_blank" rel="noopener noreferrer"
         style={{ color: "rgba(255,255,255,0.4)", fontFamily: F, fontSize: 12, textDecoration: "none", padding: "7px 14px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: R.full, transition: "all 0.2s" }}>{l}</a>
         )}
