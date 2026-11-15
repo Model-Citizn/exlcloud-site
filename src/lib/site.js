@@ -72,10 +72,13 @@ export const LINKS = {
 
 /*
  * Lead capture for the free model downloads (/dl-3way, /dl-performance, /dl-cashflow).
- * Set these to a HubSpot form (Marketing → Forms → form → Share/Embed shows portalId + formId).
- * While empty, the download is still released but the lead is NOT recorded anywhere.
+ * Uses the same HubSpot form as LINKS.contactForm (EXL Cloud portal 21651926), so every download
+ * creates/updates the contact in HubSpot AND fires the existing Zapier zap that posts
+ * "Conversion request submitted by …" to Slack #xl-zap-messages.
+ * That form only accepts: email (required), firstname, lastname, phone, message. Anything else
+ * (e.g. country) goes inside `message`, or HubSpot may reject the submission.
  */
-export const LEAD_FORM = { hubspotPortalId: "", hubspotFormId: "" };
+export const LEAD_FORM = { hubspotPortalId: "21651926", hubspotFormId: "1a1b9ac7-bc07-420e-8183-6dac25f55548" };
 
 export const NAV = [
   ["Home", "/"], ["About", "/about"], ["Features", "/features"], ["Skills", "/skills"], ["Articles", "/articles"],

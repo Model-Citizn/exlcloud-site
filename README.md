@@ -76,9 +76,11 @@ Keep the old repo for a few weeks before archiving it.
 old single-file site, also switch Pages Source back to "Deploy from a branch" (`main`, `/root`) and
 `git reset --hard backup/live-2026-11-14 && git push --force-with-lease origin main`.
 
+## Lead capture
+Model downloads (`/dl-3way`, `/dl-performance`, `/dl-cashflow`) submit to the EXL Cloud HubSpot contact form
+(`LEAD_FORM` in `src/lib/site.js`, same form as `LINKS.contactForm`). HubSpot records the contact and the existing
+Zapier zap posts "Conversion request submitted by …" to Slack #xl-zap-messages, with `Model download: <file>` as the details.
+
 ## Open items
-- `LEAD_FORM` in `src/lib/site.js` — add the HubSpot portal and form IDs so model-download leads are recorded
-  (until then, downloads are released but leads aren't captured — same as before, where they were only stored in
-  the visitor's own browser).
 - Confirm the legal entity name (`EXL Cloud Pty Ltd` vs `EXL Cloud Holdings Pty Ltd` in the privacy policy / EULA).
 - `LINKS.skillsGithub` — point at the public skills download location.

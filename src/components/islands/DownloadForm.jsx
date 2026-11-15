@@ -14,29 +14,38 @@ const DownloadForm = ({ item = "3way" }) => {
   const [form, setForm] = React.useState({ firstName: "", lastName: "", email: "", country: "Australia", phone: "+61" });
   const dl = downloadItems[item] || downloadItems["3way"];
   const [sending, setSending] = React.useState(false);
-  /* Lead goes to HubSpot (configure LEAD_FORM in src/lib/site.js). The download is released either way,
-     so a HubSpot outage never blocks the visitor. Previously leads were only saved in the visitor's own
-     browser (localStorage) and never reached EXL Cloud. */
+  /* Lead goes to the HubSpot contact form set in LEAD_FORM (src/lib/site.js), which also fires the
+     Zapier → Slack #xl-zap-messages notification. Only fields that exist on that form are sent; country
+     rides inside `message`. If HubSpot rejects the full payload (e.g. phone validation) we retry once
+     with the core fields so the lead is never silently dropped. The download is released either way,
+     so a HubSpot outage never blocks the visitor. (The old site only saved leads in the visitor's own
+     browser via localStorage, so they never reached EXL Cloud.) */
+  const submitLead = async () => {
+    const { hubspotPortalId, hubspotFormId } = LEAD_FORM;
+    if (!hubspotPortalId || !hubspotFormId) return;
+    const url = `https://api.hsforms.com/submissions/v3/integration/submit/${hubspotPortalId}/${hubspotFormId}`;
+    const phone = form.phone.replace(/[^\d+]/g, "");
+    const core = [
+      { name: "email", value: form.email.trim() },
+      { name: "firstname", value: form.firstName.trim() },
+      { name: "lastname", value: form.lastName.trim() },
+      { name: "message", value: `Model download: ${dl.label} | Country: ${form.country}${phone.length > 4 ? ` | Phone: ${phone}` : ""}` },
+    ];
+    const context = { pageUri: location.href, pageName: document.title };
+    const post = (fields) => fetch(url, {
+      method: "POST", keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fields, context }),
+    });
+    try {
+      const res = await post(phone.length > 4 ? [...core, { name: "phone", value: phone }] : core);
+      if (!res.ok) await post(core);
+    } catch (err) { /* network/HubSpot failure: still release the download */ }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    const { hubspotPortalId, hubspotFormId } = LEAD_FORM;
-    if (hubspotPortalId && hubspotFormId) {
-      try {
-        await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${hubspotPortalId}/${hubspotFormId}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fields: [
-              { name: "firstname", value: form.firstName }, { name: "lastname", value: form.lastName },
-              { name: "email", value: form.email }, { name: "country", value: form.country }, { name: "phone", value: form.phone },
-              { name: "message", value: `Model download: ${dl.label}` },
-            ],
-            context: { pageUri: location.href, pageName: document.title },
-          }),
-        });
-      } catch (err) { /* network/HubSpot failure: still release the download */ }
-    }
+    await submitLead();
     setSending(false);
     setSubmitted(true);
   };
