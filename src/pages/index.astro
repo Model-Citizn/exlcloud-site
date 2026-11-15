@@ -20,10 +20,14 @@ import { softwareJsonLd, personJsonLd, faqJsonLd } from "../lib/seo.js";
   <script is:inline>
     /* Legacy links from the old single-page site: /#article:slug, /#/path and /#page */
     (function () {
-      var h = location.hash.replace(/^#/, "");
-      if (!h) return;
-      var to = h.indexOf("article:") === 0 ? "/articles/" + h.slice(8) : h.charAt(0) === "/" ? h : /^[a-z0-9-]+$/.test(h) ? "/" + h : null;
-      if (to && to !== "/") location.replace(to);
+      function go() {
+        var h = location.hash.replace(/^#/, "");
+        if (!h || h === "main") return; /* #main = skip-to-content link */
+        var to = h.indexOf("article:") === 0 ? "/articles/" + h.slice(8) : h.charAt(0) === "/" ? h : /^[a-z0-9-]+$/.test(h) ? "/" + h : null;
+        if (to && to !== "/") location.replace(to);
+      }
+      go();
+      window.addEventListener("hashchange", go); /* also when already on the home page */
     })();
   </script>
 </BaseLayout>
