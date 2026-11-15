@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Home, { FAQ } from "../components/pages/Home.jsx";
-import HeroVideo from "../components/islands/HeroVideo.jsx";
+import HeroVideo from "../components/HeroVideo.astro";
 import ProductCarousel from "../components/islands/ProductCarousel.jsx";
 import BoardPackDemo from "../components/islands/BoardPackDemo.jsx";
 import { SITE } from "../lib/site.js";
@@ -13,7 +13,7 @@ import { softwareJsonLd, personJsonLd, faqJsonLd } from "../lib/seo.js";
   jsonLd={[softwareJsonLd(), personJsonLd(), faqJsonLd(FAQ)]}
 >
   <Home>
-    <HeroVideo slot="heroVideo" client:idle />
+    <HeroVideo slot="heroVideo" />
     <ProductCarousel slot="carousel" client:visible />
     <BoardPackDemo slot="boardPack" client:visible />
   </Home>

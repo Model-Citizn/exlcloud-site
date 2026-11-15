@@ -68,6 +68,30 @@ const indexable = IS_PRODUCTION && !noindex;
     <main id="main"><slot /></main>
     <Footer />
 
+    <script is:inline>
+      /* Count-up numbers ([data-countup]): reset to 0 before first paint, then count up over ~2 s
+         when 30% visible, as on the old site. Inline so there's no flash of the final value. */
+      (function () {
+        var els = document.querySelectorAll("[data-countup]");
+        if (!els.length || !("IntersectionObserver" in window)) return;
+        els.forEach(function (el) {
+          var end = +el.getAttribute("data-countup"), sfx = el.getAttribute("data-suffix") || "", dur = +el.getAttribute("data-duration") || 2000;
+          el.textContent = "0" + sfx;
+          var obs = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            obs.disconnect();
+            var s = 0, step = end / (dur / 16);
+            var t = setInterval(function () {
+              s += step;
+              if (s >= end) { el.textContent = end.toLocaleString("en-AU") + sfx; clearInterval(t); }
+              else el.textContent = Math.round(s).toLocaleString("en-AU") + sfx;
+            }, 16);
+          }, { threshold: 0.3 });
+          obs.observe(el);
+        });
+      })();
+    </script>
+
     <!-- Explainer video modal: any element with [data-open-video] opens it -->
     <div id="video-modal" class="vm" hidden role="dialog" aria-modal="true" aria-label="EXL Cloud 2-minute introduction">
       <div class="vm-inner">

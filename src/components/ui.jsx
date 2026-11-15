@@ -115,8 +115,11 @@ export const Icon = ({ name, size = 24, color = C.priA }) => {
   return <svg viewBox="0 0 24 24" width={size} height={size} fill="none">{icons[name]}</svg>;
 };
 
-/* ═══ COUNTER (static: final value rendered server-side) ═══ */
-export const Counter = ({ end, suffix = "" }) => <span>{Number(end).toLocaleString("en-AU")}{suffix}</span>;
+/* ═══ ANIMATED COUNTER ═══
+   The final value is in the HTML (search engines, no-JS); the count-up from 0 when it scrolls into
+   view is done by the small [data-countup] script in BaseLayout.astro — same timing as the old site. */
+export const Counter = ({ end, suffix = "", duration = 2000 }) =>
+  <span data-countup={end} data-suffix={suffix} data-duration={duration}>{Number(end).toLocaleString("en-AU")}{suffix}</span>;
 
 /* ═══ AEO: DIRECT ANSWER BLOCK ═══ */
 export const DAB = ({ children }) =>

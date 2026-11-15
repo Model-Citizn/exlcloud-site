@@ -1,0 +1,34 @@
+---
+/*
+ * Home-page hero background video — plain HTML (not React) so the muted/autoplay/playsinline
+ * attributes are in the markup: Safari and embedded previews only autoplay when they are.
+ * Behaviour matches the live site: loads ~1.5 s after the page, skipped on data-saver / 2G,
+ * shows a still first frame when the visitor's OS asks for reduced motion.
+ */
+import { LINKS } from "../lib/site.js";
+---
+<video id="hero-video" muted autoplay loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src={LINKS.heroVideo}
+  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:0;pointer-events:none"></video>
+<script>
+  const v = document.getElementById("hero-video") as HTMLVideoElement | null;
+  if (v) {
+    const conn = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+    const slow = conn && (conn.saveData || /(2g|slow-2g)/.test(conn.effectiveType || ""));
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!slow) {
+      setTimeout(() => {
+        v.muted = true; /* belt and braces for browsers that only check the property */
+        v.src = v.dataset.src!;
+        v.style.animation = "heroFadeIn 2s ease forwards";
+        if (reduced) { v.removeAttribute("autoplay"); v.preload = "metadata"; v.load(); return; } /* still first frame */
+        v.load();
+        const tryPlay = () => v.play().catch(() => {
+          /* autoplay refused (e.g. low-power mode): start on the visitor's first interaction */
+          const go = () => { v.play().catch(() => {}); ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => removeEventListener(e, go)); };
+          ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => addEventListener(e, go, { once: true, passive: true }));
+        });
+        tryPlay();
+      }, 1500);
+    }
+  }
+</script>
