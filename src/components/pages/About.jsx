@@ -6,7 +6,7 @@ import { SBarChart, SAreaChart, SLineChart, SPieChart, SHBarChart, Icon, Counter
 /* FAQ items — rendered below and emitted as FAQPage JSON-LD by the .astro page */
 export const FAQ = [
     { q: "Who founded EXL Cloud?", a: "EXL Cloud was founded by Lance Rubin, a Chartered Accountant with 20+ years of experience at PwC, KPMG, Investec Bank, and National Australia Bank. He is also the founder of Model Citizn and an FMI approved financial modelling trainer." },
-    { q: "Where is EXL Cloud based?", a: "EXL Cloud Pty Ltd is based at 80 Market Street, South Melbourne VIC 3205, Australia." },
+    { q: "Where is EXL Cloud based?", a: `${SITE.legalName} is based at 80 Market Street, South Melbourne VIC 3205, Australia.` },
     { q: "What is the relationship between EXL Cloud and Model Citizn?", a: "Model Citizn is the parent consultancy founded by Lance Rubin. EXL Cloud is the technology product arm that delivers the Excel add-in and financial modelling content. The AI-Powered Accountant training program bridges both." }];
 
 /* ═══ ABOUT ═══ */

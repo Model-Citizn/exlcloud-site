@@ -7,7 +7,7 @@
 
 export const SITE = {
   name: "EXL Cloud",
-  legalName: "EXL Cloud Pty Ltd", // ⚠ privacy policy / EULA use "EXL Cloud Holdings Pty Ltd" — confirm the correct entity
+  legalName: "EXL Cloud Holdings Pty Ltd", // confirmed by Lance Rubin, Nov 2026 (matches privacy policy / EULA)
   url: "https://exlcloud.io",
   tagline: "Keep Excel. Leverage the cloud.",
   /* homepage meta description (≤160 chars) */
