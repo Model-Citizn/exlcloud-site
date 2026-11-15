@@ -19,7 +19,7 @@ export const SITE = {
   founder: { name: "Lance Rubin", jobTitle: "Chief Excel Officer" },
   copyright: "EXL Cloud by XLC",
   clicks: 8, // "Xero to Excel in 8 clicks"
-  trialDays: 7,
+  trialDays: 14,
 };
 
 /* Headline skills number shown in copy. The real list is the `skills` content collection (src/content/skills). */

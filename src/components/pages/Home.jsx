@@ -9,7 +9,7 @@ export const FAQ = [
     { q: "How does EXL Cloud differ from other Xero-to-Excel tools?", a: `EXL Cloud provides full formula transparency — every calculation is visible and editable in Excel. Unlike CSV exports, it includes driver-based financial models, HTML board packs, Power BI integration, ${SKILLS_LABEL} Claude AI-powered skills, and Dynamic Array formulas. Other tools export flat data; EXL Cloud delivers ready-made analysis.` },
     { q: "Does EXL Cloud work on Mac?", a: "EXL Cloud requires Microsoft Excel for Windows. Mac users can run it through Parallels Desktop with Windows and Excel installed." },
     { q: "How many Xero connections are included?", a: `Both plans include ${PLANS.advanced.connections} Xero connections. Additional connections are available with volume discounts — from $6.00/connection/month at 21+ on the Data Pull plan.` },
-    { q: "Is there a free trial?", a: "Yes. EXL Cloud offers a 7-day free trial with no credit card required. Cancel anytime during the trial period." }];
+    { q: "Is there a free trial?", a: `Yes. EXL Cloud offers a ${SITE.trialDays}-day free trial with no credit card required. Cancel anytime during the trial period.` }];
 
 /* ═══ HOME PAGE ═══ */
 /* heroVideo / carousel / boardPack are islands passed in as slots from src/pages/index.astro */
@@ -35,7 +35,7 @@ const Home = ({ heroVideo, carousel, boardPack }) =>
             World-class reports, dashboards, and financial models — fully customisable in Microsoft Excel. From Xero data to board-ready output in 8 clicks.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 48 }}>
-            <Btn href={LINKS.checkout}>Start 7-Day Free Trial</Btn>
+            <Btn href={LINKS.checkout}>Start {SITE.trialDays}-Day Free Trial</Btn>
             <Btn href="/features" variant="outline">Explore Features</Btn>
           </div>
           <div style={{ display: "flex", gap: 48, flexWrap: "wrap" }}>
@@ -261,7 +261,7 @@ const Home = ({ heroVideo, carousel, boardPack }) =>
     <Sec>
       <div style={{ textAlign: "center", maxWidth: 560, margin: "0 auto" }}>
         <h2 style={{ fontFamily: F, fontSize: 36, fontWeight: 800, color: C.dark, margin: "0 0 16px", lineHeight: 1.15 }}>Ready to keep Excel and leverage the cloud?</h2>
-        <p style={{ fontFamily: F, fontSize: 17, color: C.g, margin: "0 0 36px", lineHeight: 1.6 }}>7-day free trial. No credit card. Cancel anytime.</p>
+        <p style={{ fontFamily: F, fontSize: 17, color: C.g, margin: "0 0 36px", lineHeight: 1.6 }}>{SITE.trialDays}-day free trial. No credit card. Cancel anytime.</p>
         <Btn href={LINKS.checkout}>Start Free Trial</Btn>
       </div>
     </Sec>

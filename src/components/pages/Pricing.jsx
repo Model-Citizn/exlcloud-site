@@ -15,7 +15,7 @@ const Pricing = () =>
     <section style={{ background: `radial-gradient(ellipse at 20% 0%, ${C.priL}25, transparent 50%), linear-gradient(170deg, ${C.dark}, ${C.pri})`, padding: "100px 24px 70px" }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
         <h1 style={{ fontFamily: F, fontSize: 44, fontWeight: 800, color: C.w, margin: 0, letterSpacing: -0.5 }}>Pricing & Sign Up</h1>
-        <p style={{ fontFamily: F, fontSize: 18, color: "rgba(255,255,255,0.65)", margin: "14px 0 0", maxWidth: 520, lineHeight: 1.6 }}>Choose the plan that fits. 7-day free trial included. Benefit from lower marginal cost as you add connections.</p>
+        <p style={{ fontFamily: F, fontSize: 18, color: "rgba(255,255,255,0.65)", margin: "14px 0 0", maxWidth: 520, lineHeight: 1.6 }}>Choose the plan that fits. {SITE.trialDays}-day free trial included. Benefit from lower marginal cost as you add connections.</p>
       </div>
     </section>
     <Sec>
